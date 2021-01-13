@@ -32,8 +32,10 @@ CPU가 매번 Thread를 점우했다가 놓아주기를 반복하여 Context-Swi
 #### 동시성(Concurrency) vs 병렬(Parallelism)
 |동시성|병렬|
 |------|---|
-|동시에 실행되는 것 같이 보이는 것|실제로 동시에 여러 작업이 처리되는 것|
-![image](https://user-images.githubusercontent.com/57612082/104460260-320b1b00-55f1-11eb-8dd1-83d53f901c2e.png)
+|동시에 실행되는 것 같이 보이는 것|실제로 동시에 여러 작업이 처리되는 것|   
+|![image](https://user-images.githubusercontent.com/39984656/104463005-954a7c80-55f4-11eb-8f54-f6779f6a3578.png)|![image](https://user-images.githubusercontent.com/39984656/104463017-9a0f3080-55f4-11eb-949f-54da05ebf518.png)|
+
+
 
 #### Context-Switching
 스레드 실행 혹은 종료시 스레드의 상태를 저장하고 복구하는 프로세스
