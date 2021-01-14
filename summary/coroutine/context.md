@@ -30,20 +30,20 @@ Dispatchers.Default의 스레드를 사용한다.
     - 결과가 포함되어있지않다
     - 그자리에서 바로 예외를 발생시킨다
     - join()을 만나면 현재 Coroutine이 완료댈때까지 기다린다 (suspend 된다)
-    - CoroutineScope를 사용한다
+    - CoroutineScope를 사용한다  
 - async
     - Deffered를 반환한다
     - 결과를가 포함되어있다
     - await()를 만나면 현재 Coroutine이 완료댈때까지 기다린다 (suspend 된다)
-    - CoroutineScope를 사용한다
+    - CoroutineScope를 사용한다  
 - produce 
     - ReceiveChannel을 반환한다
     - producer-consumer패턴을 사용할 수 있도록 하는 빌더
-    - ProducerScope를 사용한다
+    - ProducerScope를 사용한다  
 - runBlocking
     - Coroutine을 생성한 후 Coroutine이 완료되어 결과를 반환할때까지 현재 Thread를 Block한다
     - runBlocking의 기본 Dispatcher는 시작된 Threa이다
-    - CoroutineScope를 사용한다
+    - CoroutineScope를 사용한다  
 
 
 ## Job
