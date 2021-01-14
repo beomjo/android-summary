@@ -15,7 +15,7 @@
 #### GlobalScope
 어플리케이션이 동작하는동안 별도의 생명주기를 관리하지않고 사용할 수 있는 Scope로
 안드로이드 앱이 처음 시작할때부터 종료할 때 까지 하나의 CoroutineContext안에서 동작한다.  
-Dispatchers.Default의 스레드를 사용한다.  ㄴ
+Dispatchers.Default의 스레드를 사용한다.
 
 #### CoroutineScope
 특정한 목적의 Dispatcher를 지정하여 새로운 Coroutine의 범위를 정의한다.  
@@ -26,14 +26,15 @@ Dispatchers.Default의 스레드를 사용한다.  ㄴ
 
 ## Builder
 - launch 
-    - Job을 반환한다
+    - launch{}의 실행으로 Job을 반환한다
+    - 결과가 포함되어있지않다
     - 그자리에서 바로 예외를 발생시킨다
-    - join()을 사용하여 Job이 완료될때까지 기다릴 수 있다
+    - join()을 만나면 현재 Coroutine이 완료댈때까지 기다린다 (suspend 된다)
     - CoroutineScope를 사용한다
 - async
-    - Deffered 반환한다
-    - 결과를 반환한다
-    - await()를 만나면 실행 또는 예외를 발생시킨다
+    - Deffered를 반환한다
+    - 결과를가 포함되어있다
+    - await()를 만나면 현재 Coroutine이 완료댈때까지 기다린다 (suspend 된다)
     - CoroutineScope를 사용한다
 - produce 
     - ReceiveChannel을 반환한다
@@ -119,3 +120,18 @@ Channel은 비슷하게 send와 receive를 사용한다.
     - send시 suspend하지않는다
     - receive시에 가장 최신의 Element만 가져온다
 ![image](https://user-images.githubusercontent.com/39984656/104596084-d905ba80-56b6-11eb-9027-1c55b2e7b5a0.png)
+
+
+## Top-Level Suspending Functions
+- delay : 스레드를 차단하지않고 Coroutine을 주어진 시간동안 지연한뒤 다시 시작
+- yeild : 현재 Coroutine의 Dispatcher의 Thread를 가능한경우 다른 Coroutine에 양보한다
+- withContext : 지정된 CoroutineContext를 다른 CoroutineContext로 변경한다
+    - CoroutineContext의 새 Dispatcher가 지정된 경우에는 block실행을 다른 스레드로 이동하고 완료될시에 원래 Dispatcher로 돌아간다
+- withTimeout : 지정된 제한시간내에 block내의 Coroutine이 완료되지않을경우 TimeoutCancellationException을 throw한다
+- withTimoeoutOrNull : 지정된 제한시간내에 block내의 Coroutine이 완료되지않을경우 null을 반환한다
+- awaitAll : 주어진 모든 작업의 완료를 기다린다 
+    - 주어진 모든 작업이 완료될때까지 현재 Coroutine을 suspend한다
+    - e.g. async{}의 완료 대기
+- joinAll : 주어진 모든 작업이 완료될때까지 기다린다 
+    - 주어진 모든 작업이 완료될때까지 현재 Coroutine을 suspend한다
+    - e.g. launch{}의 완료 대기
