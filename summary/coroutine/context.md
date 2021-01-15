@@ -45,6 +45,14 @@ Dispatchers.Default의 스레드를 사용한다.
     - runBlocking의 기본 Dispatcher는 시작된 Threa이다
     - CoroutineScope를 사용한다  
 
+#### CoroutineStart
+launch,async등의 Builder 함수에서 start 매개변수에 사용된다.
+coroutine의 시작에 관련하여 설정한다  
+- CoroutineStart.DEFAULT: CoroutineContext에 따라 즉시 Coroutine을 시작한다
+- CoroutineStart.LAZY: start()함수또는 await() 사용하여 시작될때까지 작업을 지연한다
+- CoroutineStart.ATOMIC: 원자적으로(즉,취소할 수 없는 방식으로) CoroutineContext에 따라 실행되도록 Coroutine을 예약한다.DEFAULT와 유사하지만 실행을 시작하기전에 Coroutine을 cancel() 할 수 없다
+- CoroutineStart.UNDISPATCHED: Coroutine이 Dispatchers.Unconfined를 사용하여 시작된 것처럼 현재스레드에서 첫번째 중단점(suspend)까지 Coroutine을 실행한다. Coroutine이 중단(suspend)이 재개되었을때의 스레드에서 다시 수행된다
+
 
 ## Job
 - 수명주기를 가지고 있으며 완료로 끝난다. 그리고 취소할 수 있다.  
