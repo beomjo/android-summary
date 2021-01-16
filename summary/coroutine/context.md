@@ -100,6 +100,7 @@ BlockingQueue에서 put을 할때 가득 차있다면 Block하여 대기하고, 
 Channel은 비슷하게 send와 receive를 사용한다.
 따라서 여러 coroutine 사이에 순서를 보장받으며 공유하여 사용할 수 있다.
 또한 Channel은 Queue와 달리 더 이상 사용하지 않을때 close 시킬 수 있다.
+Channel이 close되었을 때, close전까지 send했던 Element들은 남아있다.
 
 
 #### Functions
