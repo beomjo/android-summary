@@ -9,38 +9,38 @@
       - [Sequences](#sequences)
       - [Suspending functions](#suspending-functions)
     - [Flows](#flows)
-  - [Flows are cold](#flows-are-cold)
-  - [Flow cancellation basics](#flow-cancellation-basics)
-  - [Flow Builders](#flow-builders)
-  - [Intermedicate flow operators(중간 연산자)](#intermedicate-flow-operators중간-연산자)
-    - [Transform operator(변환 연산자)](#transform-operator변환-연산자)
-    - [Size-limiting operators(크기 제한 연산자)](#size-limiting-operators크기-제한-연산자)
-  - [Terminal flow operator(플로우 종단 연산자)](#terminal-flow-operator플로우-종단-연산자)
-  - [Flow are sequential](#flow-are-sequential)
-  - [Flow Context](#flow-context)
-    - [Wrong emission withContext](#wrong-emission-withcontext)
-    - [flowOn operator](#flowon-operator)
-  - [Buffering](#buffering)
-    - [Conflation](#conflation)
-    - [Processing the latest value](#processing-the-latest-value)
-  - [Composing multiple flows](#composing-multiple-flows)
+  - [플로우는 차갑다(Flows are cold)](#플로우는-차갑다flows-are-cold)
+  - [플로우의 취소(Flow cancellation basics)](#플로우의-취소flow-cancellation-basics)
+  - [플로우 빌더(Flow Builders)](#플로우-빌더flow-builders)
+  - [중간 연산자(Intermedicate flow operators)](#중간-연산자intermedicate-flow-operators)
+    - [변환 연산자(Transform operator)](#변환-연산자transform-operator)
+    - [크기 제한 연산자(Size-limiting operators)](#크기-제한-연산자size-limiting-operators)
+  - [플로우 종단 연산자(Terminal flow operator)](#플로우-종단-연산자terminal-flow-operator)
+  - [플로우는 순차적이다(Flow are sequential)](#플로우는-순차적이다flow-are-sequential)
+  - [플롱우 컨텍스트(Flow Context)](#플롱우-컨텍스트flow-context)
+    - [withContext를 통한 잘못 된 방출(Wrong emission withContext)](#withcontext를-통한-잘못-된-방출wrong-emission-withcontext)
+    - [flowOn 연산자(flowOn operator)](#flowon-연산자flowon-operator)
+  - [버퍼링(Buffering)](#버퍼링buffering)
+    - [병합(Conflation)](#병합conflation)
+    - [최신 값 처리(Processing the latest value)](#최신-값-처리processing-the-latest-value)
+  - [다중 플로우 합성(Composing multiple flows)](#다중-플로우-합성composing-multiple-flows)
     - [Zip](#zip)
     - [Combine](#combine)
-  - [Flattening flows](#flattening-flows)
+  - [플로우 플래트닝(Flattening flows)](#플로우-플래트닝flattening-flows)
     - [flatMapConcat](#flatmapconcat)
     - [flatMapMerge](#flatmapmerge)
     - [flatMapLatest](#flatmaplatest)
-  - [Flow Exception](#flow-exception)
-    - [Collector try and catch](#collector-try-and-catch)
-    - [Everthing is cautch](#everthing-is-cautch)
-  - [Exception transparency](#exception-transparency)
-    - [Transparent catch](#transparent-catch)
-    - [Catching declaratively](#catching-declaratively)
-  - [Flow completion](#flow-completion)
-    - [Declarative handling](#declarative-handling)
-  - [Launching flow](#launching-flow)
-  - [Flow cancellation checks](#flow-cancellation-checks)
-    - [Making busy flow cancellable](#making-busy-flow-cancellable)
+  - [플로우 예외(Flow Exception)](#플로우-예외flow-exception)
+    - [수집기의 try and catch(Collector try and catch)](#수집기의-try-and-catchcollector-try-and-catch)
+    - [모든 예외처리(Everthing is cautch)](#모든-예외처리everthing-is-cautch)
+  - [예외 투명성(Exception transparency)](#예외-투명성exception-transparency)
+    - [catch 예외 투명성(Transparent catch)](#catch-예외-투명성transparent-catch)
+    - [선억적인 에러 캐치(Catching declaratively)](#선억적인-에러-캐치catching-declaratively)
+  - [플로우 완료(Flow completion)](#플로우-완료flow-completion)
+    - [선언적인 처리(Declarative handling)](#선언적인-처리declarative-handling)
+  - [플로우 실행(Launching flow)](#플로우-실행launching-flow)
+  - [플로우 취소 확인(Flow cancellation checks)](#플로우-취소-확인flow-cancellation-checks)
+    - [바쁜 flow를 취소 가능하게 만들기(Making busy flow cancellable)](#바쁜-flow를-취소-가능하게-만들기making-busy-flow-cancellable)
 
 <!-- /code_chunk_output -->
 
@@ -133,13 +133,13 @@ I'm not blocked 3
 ```
 
 
-## Flows are cold
+## 플로우는 차갑다(Flows are cold)
 flow는 sequnce와 비슷하게 cold 스트림이다
 `flow{ }` 빌더가 `collect()` 를 호출할 때 까지 실행되지 않는다
 이 때문에 `suspend` 로 선언하지 않아도 되는것이다.
 
 
-## Flow cancellation basics
+## 플로우의 취소(Flow cancellation basics)
 flow의 취소는 coroutine의 일반적인 협력적인 취소를 지킵니다.
 ```
 fun simple(): Flow<Int> = flow { 
@@ -166,7 +166,7 @@ Emitting 2
 Done
 ```
 
-## Flow Builders
+## 플로우 빌더(Flow Builders)
 - flow {  }
     - 기본적인 flow Builder
 - [flowOf(...)](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/flow-of.html)
@@ -175,7 +175,7 @@ Done
     - 다양한 Collection, Sequnce를 확장함수를 통하여 Flow로 변환
 
 
-## Intermedicate flow operators(중간 연산자)
+## 중간 연산자(Intermedicate flow operators)
 Collection이나 Sequnce와 동일하게 연산자로 변환할 수 있다.
 하지만 중요한 차이점은 연산자로 수행되는 코드블럭에서 `suspend` 함수를 호출할 수 있다.
 익숙한 `map()`, `filter()` 등이 대표적인 예시이다.
@@ -191,7 +191,7 @@ fun main() = runBlocking<Unit> {
         .collect { response -> println(response) }
 ```
 
-### Transform operator(변환 연산자)
+### 변환 연산자(Transform operator)
 플로우 변환 연산자들 중에서 가장 일반적인 것은 `transform` 연산자다.
 이 연산자는 `map` 이나 `filter()` 같은 단순한 변환이나 혹은 복잡한 다른 변환들을 구현하기 위해 된다.
 `transform()` 연산자를 사용하여 우리는 임의의 횟수로 임의의 값들을 방출할 수 있습니다.
@@ -222,7 +222,7 @@ Making request 3
 response 3
 ```
 
-### Size-limiting operators(크기 제한 연산자)
+### 크기 제한 연산자(Size-limiting operators)
 take같은 크기 제한 중간 연산자는 정의된 제한치에 도달하면 실행을 취소한다.
 코루틴에서 취소는 언제나 예외를 발생시키는 방식으로 수행 되며, 
 이를 통해 `try { ... } finally { ... }` 로 예외 처리등이 가능하다.
@@ -251,7 +251,7 @@ Finally in numbers
 ```
 
 
-## Terminal flow operator(플로우 종단 연산자)
+## 플로우 종단 연산자(Terminal flow operator)
  플로우 수집을 시작하는 중단 함수이다.
  - `collect()`
  - `toList()`
@@ -267,7 +267,7 @@ println(sum)
  ```
 
 
-## Flow are sequential
+## 플로우는 순차적이다(Flow are sequential)
 Flow는 Sequnce처럼 기본적으로 `collect()` 등의 종단 연산자가 호출될 때 순차적으로 연산된다
 ```
 (1..5).asFlow()
@@ -295,7 +295,7 @@ Collect string 4
 Filter 5
 ```
 
-## Flow Context
+## 플롱우 컨텍스트(Flow Context)
 flow의 수집(종단함수 호출)은 항상 CoroutineContext안에서 수행된다.
 이를 **컨텍스트 보존(context preservation)** 이라 한다.
 
@@ -318,7 +318,7 @@ fun main() = runBlocking<Unit> {
 [main @coroutine#1] Collected 3
 ```
 
-### Wrong emission withContext
+### withContext를 통한 잘못 된 방출(Wrong emission withContext)
 `flow{ }` 블럭 내에서 `withContext` 로 CoroutineContext를 변경하면 안된다.
 ```
 fun simple(): Flow<Int> = flow {
@@ -343,7 +343,7 @@ Exception in thread "main" java.lang.IllegalStateException: Flow invariant is vi
     at ...
 ```
 
-### flowOn operator
+### flowOn 연산자(flowOn operator)
 flow에서 CoroutineContext를 변경하려면 `flowOn()` 연산자를 사용해야한다.
 ```
 fun simple(): Flow<Int> = flow {
@@ -374,7 +374,7 @@ flowOn 연산자가 CoroutineDispatcher를 변경할 buffering 매커니즘을 �
 `flow{ }` 의 기본적인 특성인 순차성을 잃어버리게 될 수 있다.
 
 
-## Buffering
+## 버퍼링(Buffering)
 비동기 작업의 경우에 buffer를 사용하였을 때 시간이 단축되는 경우도 있다.
 ```
 fun simple(): Flow<Int> = flow {
@@ -426,7 +426,7 @@ Collected in 1034 ms
 또한 flowOn 연산자가 
 flowOn 연산자가 CoroutineDispatcher를 변경할 경우 동일한 버퍼링 매커니즘을 사용한다.
 
-### Conflation
+### 병합(Conflation)
 flow가 연산의 일부분이나, 상태의 업데이트만을 처리해야 할 경우 `conflate()`를 병합을 사용할 수 있다.
 `conflate()` 을 사용하여 `collect()` 의 처리가 너무 느릴 경우 방출된 중간 값을 스킵할 수 있다
 
@@ -448,7 +448,7 @@ println("Collected in $time ms")
 Collected in 758 ms
 ```
 
-### Processing the latest value
+### 최신 값 처리(Processing the latest value)
 중간값을 모두 삭제하여 최신의 값만을 처리하여 속도를 높이는 방법도 있다.
 `collectLatest()` 를 사용하여 
 새로운 값이 emit될 때 마다 기존의 `collect` 작업을 취소하고 재시작 한다.
@@ -474,7 +474,7 @@ Collected in 677 ms
 ```
 
 
-## Composing multiple flows
+## 다중 플로우 합성(Composing multiple flows)
 여러가지 flow를 합성하는 여러가지 방법이 있다.
 
 ### Zip 
@@ -506,7 +506,7 @@ nums.combine(strs) { a, b -> "$a -> $b" }
 ```
 
 
-## Flattening flows
+## 플로우 플래트닝(Flattening flows)
 `flow{ flow{ } }` 처럼 flow가 중첩되는 경우가 있다. ( `Flow<Flow<String>>`)
 예를들어 
 ```
@@ -577,11 +577,11 @@ val startTime = System.currentTimeMillis() // remember the start time
 3: Second at 931 ms from start
 ```
 
-## Flow Exception
+## 플로우 예외(Flow Exception)
 flow는 블럭 안에서 코드가 예외를 발생시키면 예외 발생 상태로 종료된다.
 예외처리에 대하여 알아보자
 
-### Collector try and catch
+### 수집기의 try and catch(Collector try and catch)
 collector에서 `try{  } catch{ }` 를 사용
 ```
 fun simple(): Flow<Int> = flow {
@@ -610,7 +610,7 @@ Emitting 2
 Caught java.lang.IllegalStateException: Collected 2
 ```
 
-### Everthing is cautch
+### 모든 예외처리(Everthing is cautch)
 `flow{ }` 이나, 중간연산자, 종단연산자 등에서 발생하는 모든 에러도 `try{ } catch{ }` 로 예외처리 가능
 ```
 fun simple(): Flow<String> = 
@@ -641,14 +641,14 @@ Caught java.lang.IllegalStateException: Crashed on 2
 ```
 
 
-## Exception transparency
+## 예외 투명성(Exception transparency)
 위의 `try{ } catch{  }` 를 사용하는것은 예외투명성을 위반하는 것이다.
 예외 투명성을 보존하기 위한 방법으로 아래와 같은 방법이 있다.
 - `throw` 연산자를 통한 예외 다시 던지기
 - `catch()` 로직에서 `emit()` 을 사용하여 값 타입으로 방출
 - 다른 코드를 통한 예외 무시, 로깅, 기타 처리
 
-### Transparent catch
+### catch 예외 투명성(Transparent catch)
 `catch()`는 업스트림에서 발생한 예외만을 처리한다.
 ```
 fun simple(): Flow<Int> = flow {
@@ -676,7 +676,7 @@ Exception in thread "main" java.lang.IllegalStateException: Collected 2
  ....
 ```
 
-### Catching declaratively
+### 선억적인 에러 캐치(Catching declaratively)
 ```
 simple()
     .onEach { value ->
@@ -694,10 +694,10 @@ Caught java.lang.IllegalStateException: Collected 2
 ```
 
 
-## Flow completion
+## 플로우 완료(Flow completion)
 flow의 수집이 종료(정상종료 or 예외발생)되엇을 때 그 이후 동작을 처리해야 할 때 가 있다
 
-### Declarative handling
+### 선언적인 처리(Declarative handling)
 `onCompletion()` 중간 연산자를 추가하여 
 flow가 완전히 수집되었을때 실행할 로직을 정의할 수 있다.
 
@@ -751,7 +751,7 @@ java.lang.IllegalStateException: Collected 2
 Exception in thread "main" java.lang.IllegalStateException: Collected 2
 ```
 
-## Launching flow
+## 플로우 실행(Launching flow)
 flow에서 발생하는 이벤트들에 대응하는 처리를 각각 해야한다면
 중간 연산자 `onEach()`를 사용한다.
 
@@ -797,7 +797,7 @@ Event: 3
 또한 `launchIn()`은 Job을 반환한다.
 
 
-## Flow cancellation checks
+## 플로우 취소 확인(Flow cancellation checks)
 `flow { }` 는 내보낸 각 값에 대하여 자체적으로 `ensureActive` 검사를 수행한다.
 ```
 fun foo(): Flow<Int> = flow { 
@@ -849,7 +849,7 @@ fun main() = runBlocking<Unit> {
 Exception in thread "main" kotlinx.coroutines.JobCancellationException: BlockingCoroutine was cancelled; job="coroutine#1":BlockingCoroutine{Cancelled}@3327bd23
 ```
 
-### Making busy flow cancellable
+### 바쁜 flow를 취소 가능하게 만들기(Making busy flow cancellable)
 `cancellable()` 을 사용하면 `.onEach{ currentCoroutineContext().ensureActive() }`를 수행하여
 1~3까지 숫자만 수집된다
 ```
