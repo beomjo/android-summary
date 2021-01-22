@@ -79,6 +79,7 @@ listOf(1, 2, 3, 4)
 
 // list(1) -> map(1*1) -> find(1>3) -> list(2) -> map(2*2) -> find(4>3) -> 종료
 ```
+[Kotlin-Sequences](https://kotlinlang.org/docs/reference/sequences.html)
 
 #### Suspending functions
 ```
