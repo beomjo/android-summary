@@ -7,5 +7,5 @@
     - [Context](./summary/coroutine/context.md)
     - [Asynchronous Flow](./summary/coroutine/asynchronous_flow.md)
 - DI
-  - Dagger Hilt
+  - [Dagger Hilt](./summary/di/dagger_hilt.md)
   - Koin - TBD
