@@ -143,11 +143,11 @@ Component와 부모 자식 관계를 맺을 수 있다.
 ## 의존성을 주입하는 순서 (Flow)
 ![image](https://user-images.githubusercontent.com/39984656/107518083-f2385300-6bf1-11eb-8041-15ba7ca1dc43.png)
 
-1. @Inject
-2. SubComponent
+1. @Inject가 선언된 클래스의 생성자, 변수, 메소드에서 주입 요청
+2. SubComponent 
 3. Module
 4. Scope에 있으면 해당 객체 리턴, 없으면 생성
-5. SubComponent에 맞는 타입을 못찾으면 상위 Component
+5. SubComponent에서 맞는 타입을 못찾으면 상위 Component로
 6. Module
 7. Scope 있으면 해당 객체 리턴, 없으면 생성
 
