@@ -109,7 +109,7 @@ object NetworkModule {
 의존성 관련 객체의 범위를 지정. 
 같은 범위에서 주입 요청시 동일한 객체를 반환한다.
 ```
-// 커스텀 스코프 생성 에시
+// 커스텀 스코프 생성 예시
 @Scope
 @MustBeDocumented
 @Retention(value = AnnotationRetention.RUNTIME)
