@@ -15,3 +15,6 @@
     - [Dagger Hilt](./summary/di/dagger_hilt.md)
   - Koin - TBD
 - Jetpack
+  - [LiveData](./summary/jetpack/livedata.md)
+  - [ViewModel](./summary/jetpack/viewmodel.md)
+  
