@@ -32,18 +32,15 @@ KTX 확장 프로그램은 간결하고 직관적인 Kotlin을 Jetpack, Android 
     - [androidx.core.view](https://developer.android.com/reference/kotlin/androidx/core/view/package-summary?hl=ko)
     - [androidx.core.widget](https://developer.android.com/reference/kotlin/androidx/core/widget/package-summary?hl=ko)
 - [fragment](https://developer.android.com/reference/kotlin/androidx/fragment/app/package-summary?hl=ko#extension-functions-summary)
-- lifecycle
+- [lifecycle](https://developer.android.com/reference/kotlin/androidx/lifecycle/package-summary?hl=ko)
 - livedata
-- navigation
-- palette
+- [navigation](https://developer.android.com/reference/kotlin/androidx/navigation/package-summary?hl=ko)
+- [palette](https://developer.android.com/reference/kotlin/androidx/palette/graphics/package-summary?hl=ko)
 - reactive streams
-- room
-- sqlite
+- [room](https://developer.android.com/reference/kotlin/androidx/room/package-summary?hl=ko)
+- [sqlite](https://developer.android.com/reference/kotlin/androidx/sqlite/db/package-summary?hl=ko)
 - viewmodel
 - workmanager
 - firebase
 - google maps platform
 - play core
-
-
-## 
