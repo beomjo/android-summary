@@ -39,8 +39,5 @@ KTX 확장 프로그램은 간결하고 직관적인 Kotlin을 Jetpack, Android 
 - reactive streams
 - [room](https://developer.android.com/reference/kotlin/androidx/room/package-summary?hl=ko)
 - [sqlite](https://developer.android.com/reference/kotlin/androidx/sqlite/db/package-summary?hl=ko)
-- viewmodel
-- workmanager
-- firebase
-- google maps platform
-- play core
+- [viewmodel](https://developer.android.com/jetpack/androidx/releases/lifecycle?hl=ko)
+- [workmanager](https://developer.android.com/jetpack/androidx/releases/work?hl=ko)
