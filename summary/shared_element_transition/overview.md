@@ -9,7 +9,6 @@ Material Design 으로 동작하기 때문에 API 21 미만은 사용할 수 없
 ## 예시
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/57612082/112417159-53fbe900-8d6a-11eb-87d2-e26058452b5e.gif)
 ![shared-element-transition](https://user-images.githubusercontent.com/39984656/112491754-f4cac280-8dc3-11eb-8e6d-f08246ecbe1f.gif)
-m/39984656/112491663-de246b80-8dc3-11eb-9cad-17e57c331c00.png)
 ![sample](https://user-images.githubusercontent.com/57612082/112416975-0da68a00-8d6a-11eb-8bab-8520e7bbe2c3.gif)
 
 
