@@ -4,6 +4,11 @@
 - Android
   - Transition
     - [Shared Element Transition](./summary/shared_element_transition/overview.md)
+  - Notification
+    - Channels - TBD
+    - [Expandable](notification/expandable/overview.md)
+    - Notification Group - TBD
+    - Custom Notification Layout - TBD
 - Kotlin
   - Coroutine
     - [Basic](./summary/coroutine/basic.md)
@@ -14,7 +19,7 @@
     - [자주 사용하는 KTX](./summary/ktx/frequently_used_ktx.md)
 - DI
   - Dagger
-    - [Dagger 2](./summary/di/dagger2.md )
+    - [Dagger 2](./summary/di/dagger2.md)
     - [Dagger Hilt](./summary/di/dagger_hilt.md)
   - Koin - TBD
 - Jetpack
