@@ -16,4 +16,6 @@
 
 
 ## Media controls notification(미디어 컨트롤 알림)
+[[미디어 컨트롤 스타일 알림 만들기]](media_control.md)
+
 ![image](https://user-images.githubusercontent.com/39984656/113369820-38619580-939d-11eb-8f69-e0b7eab1557e.png)
