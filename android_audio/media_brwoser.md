@@ -22,6 +22,7 @@
 오디오 앱을 만들 때 가장 기본적인 아키텍처는 클라이언트/서버 이다.
 플레이어와 미디어세션은 `MediaBrowserService`내에서 구현되며 
 UI와 미디어 컨트롤러는 `MediaBrowser`와 함께 Activity 등에서 실행된다.
+
 ![image](https://user-images.githubusercontent.com/39984656/114038174-9a019280-98bc-11eb-88b1-620aa3c538bb.png)
 
 
