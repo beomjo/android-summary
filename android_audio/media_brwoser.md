@@ -138,7 +138,7 @@ ConnectionCallback과 함께 생성한다.
     }
 ```
 callback은 MediaSession에 등록한다.
-이 등록된 callback은 MediaBrowser의 Controller에서 제어하였을때, 선언한 callback 메서드들이 실행된다.
+이 등록된 callback은 MediaBrowser의 Controller에서 제어하였을때, 선언한 callback 메서드들이 실행된다.  
 [사용할 수 있는 CallBack Method](https://developer.android.com/reference/kotlin/android/support/v4/media/session/MediaSessionCompat.Callback)
 
 #### MediaBrowserServiceCompat Code
