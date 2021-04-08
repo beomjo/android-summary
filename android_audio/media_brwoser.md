@@ -139,7 +139,7 @@ ConnectionCallback과 함께 생성한다.
 ```
 callback은 MediaSession에 등록한다.
 이 등록된 callback은 MediaBrowser의 Controller에서 제어하였을때, 선언한 callback 메서드들이 실행된다.  
-[사용할 수 있는 CallBack Method](https://developer.android.com/reference/kotlin/android/support/v4/media/session/MediaSessionCompat.Callback)
+[[사용할 수 있는 CallBack Method]](https://developer.android.com/reference/kotlin/android/support/v4/media/session/MediaSessionCompat.Callback)
 
 #### MediaBrowserServiceCompat Code
 ```kotlin
@@ -194,7 +194,7 @@ override fun onGetRoot(
 ```
 
 #### onLoadChildren()으로 Client에 콘텐츠 전달
-클라이언트(`MediaBrowser`)는 연결 이후 `MediaBrowserCompat.subscribe()`를 호출하여 `BrowserRoot`를 순회할 수 있다.
+클라이언트(`MediaBrowser`)는 연결 이후 `MediaBrowserCompat.subscribe()`를 호출하여 `BrowserRoot`를 순회할 수 있다.  
 `subscribe()`메소드는 `onLoadChildren()` 콜백을 서비스로 전송하고
 그러면 `MediaBrowser.MediaItem` 객체 목록이 반환된다.
 
