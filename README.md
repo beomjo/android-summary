@@ -6,11 +6,11 @@
     - [Shared Element Transition](./summary/shared_element_transition/overview.md)
   - Notification
     - Channels - TBD
-    - [Expandable](notification/expandable/overview.md)
+    - [Expandable](./summary/notification/expandable/overview.md)
     - Notification Group - TBD
     - Custom Notification Layout - TBD
   - Audio
-    - [MediaBrowser](android_audio/media_brwoser.md)
+    - [MediaBrowser](./summary/android_audio/media_brwoser.md)
 - Kotlin
   - Coroutine
     - [Basic](./summary/coroutine/basic.md)
