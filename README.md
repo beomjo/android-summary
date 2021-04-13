@@ -28,6 +28,7 @@
   - [LiveData](./summary/jetpack/livedata.md)
   - [ViewModel](./summary/jetpack/viewmodel.md)
   - [DataBinding](./summary/jetpack/databinding.md)
+  - [DataStore](./summary/jetpack/data_store.md)
 
 - Test
    - [MockK](summary/test/mockk.md)
