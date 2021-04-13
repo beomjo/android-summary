@@ -45,7 +45,8 @@ DataStore는 소규모 단순 데이터 셋에 적합하며, 부분업데이트�
 |런타임 Exception에서 안전함|❌|✅|✅|
 |강력한 일관성을 보장하는 Transaction API가 있음|❌|✅|✅|
 |데이터 마이그레이션 가능여부|❌|✅|✅|
-|Type 안정성(Type보장)|❌|❌|✅|
+|Type 안정성(Type보장)|❌|❌|✅|  
+ 
 (1) SharedPreferences는 UI Thread에서 안전하게 호출할 수 있지만 실제로는 Disk I/O 작업을 수행하는 동기 API가 있다.
 또한  `apply()`에서 UI Thread를 `fsync()`에서 차단한다.
 보류중인 `fsync()` 호출은 응용프로그램의 모든 위치에서 SharedPreferences의 작업이 `apply()`start, stop될 때 마다 트리거된다. 따라서 종종 `apply()`에 의해 예약된 보류중인 `fsync()`호출시에 ANR의 원인이 된다.
