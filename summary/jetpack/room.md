@@ -2,7 +2,7 @@
 
 ## Room 이란 ?
 Room은 안드로이드 앱에서 SQLite 데이터베이스를 쉽고 편리하게 사용할 수 있도록 한다. 
-Entity, DAO, Room Database 총 세 개의 구성 요소를 통해 Room 데이터베이스 라이브러리가 구성한다
+Entity, DAO, Room Database 총 세 개의 구성 요소를 통해 Room 데이터베이스 라이브러리가 구성한다.
 
 
 ## 구성요소
