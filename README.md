@@ -5,10 +5,10 @@
   - Transition
     - [Shared Element Transition](./summary/shared_element_transition/overview.md)
   - Notification
-    - Channels - TBD
+    - Channels
     - [Expandable](./summary/notification/expandable/overview.md)
-    - Notification Group - TBD
-    - Custom Notification Layout - TBD
+    - Notification Group
+    - Custom Notification Layout
   - Audio
     - [MediaBrowser](./summary/android_audio/media_brwoser.md)
   - [ViewPager2](./summary/viewpager2/summary.md) 
