@@ -31,7 +31,8 @@
   - [DataBinding](./summary/jetpack/databinding.md)
   - [DataStore](./summary/jetpack/data_store.md)
   - [Room](./summary/jetpack/room.md)
-
 - Test
    - [MockK](summary/test/mockk.md)
+- Etc
+    - [Glide](summary/etc/glide.md)
   
