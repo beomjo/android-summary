@@ -37,7 +37,7 @@ Bump! 앱을 만든 Bumptech가 구글에 인수되면서 Bump앱에서 사용�
 ## Glide 특징
 - 사용하기 편리한 API
 - PlaceHolder, Animation, Transformation
-- 다양한 데이터 모델 지원 (content://, file://, http://, android.resource://)
+- 다양한 데이터 모델 지원 (content://, file://, http://, android.resource://)
 - gif 지원  
 - Junk를 최소화 하기 위해 비트맵 객체 재활용
 
