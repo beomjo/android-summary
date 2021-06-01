@@ -4,7 +4,6 @@
 <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
 <!-- code_chunk_output -->
 - [ViewPager2](#viewpager2)
-- [ViewPager2](#viewpager2)
   - [Index](#index)
   - [개요](#개요)
   - [ViewPager2 새로운 기능](#viewpager2-새로운-기능)

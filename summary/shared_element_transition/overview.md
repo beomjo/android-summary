@@ -21,7 +21,7 @@ xml로 transition을 설정하는 방법도 있지만
 // Activity A 
 override fun onCreate(savedInstanceState: Bundle?) {
     window.requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS)
-    setExitSharedElementCallback(MaterialContainerTransformSharedElementCallback())
+setExitSharedElementCallback(MaterialContainerTransformSharedElementCallback())
     window.sharedElementsUseOverlay = false
     super.onCreate(savedInstanceState)
     ViewCompat.setTransitionName(someView, "item1")
