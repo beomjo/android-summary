@@ -116,8 +116,8 @@ ProGuard
 ```
 
 ### placeHolder()
-이미지를 로딩하는동안 보일 이미지 설정
-resourceId 또는 Drawable을 설정한다.
+이미지를 로딩하는동안 보일 이미지 설정  
+resourceId 또는 Drawable을 설정한다.  
 ```kotlin
  Glide.with(this)
       .load(imageUrl)
@@ -144,9 +144,9 @@ Glide.with(this)
 ```
 
 ### thumbnail()
- 원본 이미지를 썸네일로 사용한다. 
- 지정한 % 비율만큼 미리 이미지를 가져와서 보여준다. 
- 0.1f로 지정했다면 실제 이미지 크기 중 10%만 먼저 가져와서 흐릿하게 보여준다.
+ 원본 이미지를 썸네일로 사용한다.     
+ 지정한 % 비율만큼 미리 이미지를 가져와서 보여준다.     
+ 0.1f로 지정했다면 실제 이미지 크기 중 10%만 먼저 가져와서 흐릿하게 보여준다.   
 ```kotlin
 Glide.with(this)
       .load(imageUrl)
@@ -157,7 +157,7 @@ Glide.with(this)
 ### Scaling - fitCenter(), centerCrop()
 
 #### fitCenter()
-실제 이미지가 이미지뷰의 사이즈와 다를 때, 이미지와 이미지뷰의 중간을 맞춰서 이미지 크기를 스케일링한다. 
+실제 이미지가 이미지뷰의 사이즈와 다를 때, 이미지와 이미지뷰의 중간을 맞춰서 이미지 크기를 스케일링한다.   
 ```kotlin
 Glide.with(this)
      .load(imageUrl)
@@ -166,7 +166,7 @@ Glide.with(this)
 ```
 
 #### centerCrop()
-실제 이미지가 이미지뷰의 사이즈보다 클 때, 이미지뷰의 크기에 맞춰 이미지 중간부분을 잘라서 스케일링한다.
+실제 이미지가 이미지뷰의 사이즈보다 클 때, 이미지뷰의 크기에 맞춰 이미지 중간부분을 잘라서 스케일링한다.  
 ```kotlin
 Glide.with(this)
      .load(imageUrl)
@@ -175,8 +175,8 @@ Glide.with(this)
 ```
 
 ### Animation - crossFade(), dontAnimate()
-원본 이미지가 다 로드되고 나면 PlaceHolder 이미지가 원본 이미지로 교체되는데, 이 때 애니메이션 처리를 할 수 있다.
-```kotlin
+원본 이미지가 다 로드되고 나면 PlaceHolder 이미지가 원본 이미지로 교체되는데, 이 때 애니메이션 처리를 할 수 있다.  
+```kotlin 
 // Animation On
 Glide.with(this)
      .load(imageUrl)
@@ -199,10 +199,10 @@ Glide.with(this)
 ## 캐싱
 
 ### 기본 정책
-Glide는 기본적으로 메모리 & 디스크에 이미지를 캐싱하여 불필요한 네트워크 연결을 줄인다.
+Glide는 기본적으로 메모리 & 디스크에 이미지를 캐싱하여 불필요한 네트워크 연결을 줄인다.  
 
 ### 메모리 캐싱
-- 기본적으로 메모리 캐싱을 하기때문에, 메모리 캐싱을 위해 추가적으로 할 일은 없다
+- 기본적으로 메모리 캐싱을 하기때문에, 메모리 캐싱을 위해 추가적으로 할 일은 없다  
 - 메모리 캐싱을 끄려면 skipMemoryCache(true)를 호출한다
 - 처음 메모리 캐싱을 한 후에, skipMemoryCache(true)로 캐싱을 중지하더라도, 그 전에 저장된 캐시는 그대로 남아있다
 ```kotlin
@@ -213,14 +213,14 @@ Glide.with(this)
 ```
 
 ### 디스크 캐싱
-- 기본적인 개념은 메모리 캐시와 같다. Glide는 기본적으로 디스크 캐싱을 수행한다.
-- 디스크 캐싱을 끄려면 diskCacheStrategy(DiskCacheStrategy.NONE) 메서드를 호출한다.
-- diskCacheStrategy 메서드는 DiskCacheStrategy enum을 인수로 받는다.
+- 기본적인 개념은 메모리 캐시와 같다. Glide는 기본적으로 디스크 캐싱을 수행한다
+- 디스크 캐싱을 끄려면 diskCacheStrategy(DiskCacheStrategy.NONE) 메서드를 호출한다
+- diskCacheStrategy 메서드는 DiskCacheStrategy enum을 인수로 받는다
     - DiskCacheStrategy.NONE : 디스크 캐싱을 하지 않는다.
     - DiskCacheStrategy.SOURCE : 원본 이미지만 캐싱
     - DiskCacheStrategy.RESULT : 변형된 이미지만 캐싱
     - DiskCacheStrategy.ALL : 모든 이미지를 캐싱(기본)
-- 메모리 캐싱과는 별개이므로, 둘다 사용하지 않을 경우 다음과 같이 둘다 꺼주어야 한다.
+- 메모리 캐싱과는 별개이므로, 둘다 사용하지 않을 경우 다음과 같이 둘다 꺼주어야 한다
 ```kotlin
 Glide.with(this)
     .load(imageUrl)

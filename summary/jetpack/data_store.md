@@ -24,15 +24,15 @@
 
 
 ## DataStore 란 ?
-[Protocol Buffer](https://developers.google.com/protocol-buffers)를 사용하여 키-값 쌍 또는 Type(유형)이 지정된 객체를 저장할 수 있는 데이터 저장소이다.
-DataStore는 Kotlin Coroutine 및 Flow를 사용하여 비동기적이고 일관된 트랜잭션 방식으로 데이터를 저장한다.
-DataStore는 소규모 단순 데이터 셋에 적합하며, 부분업데이트나 참조 무결정은 지원하지 않는다.
-복잡한 대규모 데이터 셋, 부분 업데이트, 참조 무결성 등을 지원해야 하는 경우에는 DataStore대신 Room을 사용하는것이 좋다.
+[Protocol Buffer](https://developers.google.com/protocol-buffers)를 사용하여 키-값 쌍 또는 Type(유형)이 지정된 객체를 저장할 수 있는 데이터 저장소이다.  
+DataStore는 Kotlin Coroutine 및 Flow를 사용하여 비동기적이고 일관된 트랜잭션 방식으로 데이터를 저장한다.  
+DataStore는 소규모 단순 데이터 셋에 적합하며, 부분업데이트나 참조 무결정은 지원하지 않는다.  
+복잡한 대규모 데이터 셋, 부분 업데이트, 참조 무결성 등을 지원해야 하는 경우에는 DataStore대신 Room을 사용하는것이 좋다.  
 
 
 ## DataStore 종류
-- Preferences DataStore : 키를 사용하여 데이터를 저장하고 데이터에 엑세스한다. 타입 안정성을 제공하지 않으며 사전 정의된 스키마가 필요하지 않다.
-- Proto DataStore : 맞춤 데이터 타입(Type)의 인스턴스로 데이터를 저장한다. 타입 안정성을 제공하며 [Protocol Buffer](https://developers.google.com/protocol-buffers)를 사용하여 스키마를 정의해야 한다.
+- Preferences DataStore : 키를 사용하여 데이터를 저장하고 데이터에 엑세스한다. 타입 안정성을 제공하지 않으며 사전 정의된 스키마가 필요하지 않다  
+- Proto DataStore : 맞춤 데이터 타입(Type)의 인스턴스로 데이터를 저장한다. 타입 안정성을 제공하며 [Protocol Buffer](https://developers.google.com/protocol-buffers)를 사용하여 스키마를 정의해야 한다  
 
 
 ## SharedPreference vs PreferenceDataStore vs PhotoDataStore
@@ -47,18 +47,18 @@ DataStore는 소규모 단순 데이터 셋에 적합하며, 부분업데이트�
 |데이터 마이그레이션 가능여부|❌|✅|✅|
 |Type 안정성(Type보장)|❌|❌|✅|  
  
-(1) SharedPreferences는 UI Thread에서 안전하게 호출할 수 있지만 실제로는 Disk I/O 작업을 수행하는 동기 API가 있다.
-또한  `apply()`에서 UI Thread를 `fsync()`에서 차단한다.
-보류중인 `fsync()` 호출은 응용프로그램의 모든 위치에서 SharedPreferences의 작업이 `apply()`start, stop될 때 마다 트리거된다. 따라서 종종 `apply()`에 의해 예약된 보류중인 `fsync()`호출시에 ANR의 원인이 된다.
+(1) SharedPreferences는 UI Thread에서 안전하게 호출할 수 있지만 실제로는 Disk I/O 작업을 수행하는 동기 API가 있다.  
+또한  `apply()`에서 UI Thread를 `fsync()`에서 차단한다.  
+보류중인 `fsync()` 호출은 응용프로그램의 모든 위치에서 SharedPreferences의 작업이 `apply()`start,   stop될 때 마다 트리거된다. 따라서 종종 `apply()`에 의해 예약된 보류중인 `fsync()`호출시에 ANR의 원인이 된다.  
 
 
 ## PreferencesDataStore
 
 ### 특징
-- Transaction 방식으로 데이터 업데이트 처리
-- 데이터의 현재 상태를 노출한다
-- `apply()` `commit()` 메소드가 없다
-- 내부 상태에 대한 변경가능한 참조를 반환하지 않음
+- Transaction 방식으로 데이터 업데이트 처리  
+- 데이터의 현재 상태를 노출한다  
+- `apply()` `commit()` 메소드가 없다  
+- 내부 상태에 대한 변경가능한 참조를 반환하지 않음  
 
 ### 설정
 Preferences DataStore
@@ -152,15 +152,15 @@ suspend fun enableSortByDeadline(enable: Boolean) {
 ## ProtoDataStore
 
 ### Overview
-SharedPreferences 및 Preferences DataStore의 단점 중 하나는 스키마를 정의하거나 키가 올바른 유형으로 액세스되는지 확인할 방법이 없다는 것이다. 
-Proto DataStore는 프로토콜 버퍼 를 사용하여 스키마를 정의 함으로써이 문제를 한다. 
-Protobufs를 사용하면 DataStore는 어떤 유형이 저장되는지 알고 있으며이를 제공하기 만하면 키를 사용할 필요가 없다.
+SharedPreferences 및 Preferences DataStore의 단점 중 하나는 스키마를 정의하거나 키가 올바른 유형으로 액세스되는지 확인할 방법이 없다는 것이다.  
+Proto DataStore는 프로토콜 버퍼 를 사용하여 스키마를 정의 함으로써이 문제를 한다.   
+Protobufs를 사용하면 DataStore는 어떤 유형이 저장되는지 알고 있으며이를 제공하기 만하면 키를 사용할 필요가 없다.  
 
 ### 특징
-[Protocol Buffer](https://developers.google.com/protocol-buffers)를 사용하여 스키마를 정의한다.
+[Protocol Buffer](https://developers.google.com/protocol-buffers)를 사용하여 스키마를 정의한다.  
 Protobufs를 사용하면 강력한 Type 데이터를 유지할 수 있다.  
-XML 및 기타 유사한 데이터 형식보다 더 빠르고, 작고, 단순하며, 모호하지 않다. 
-Proto DataStore에서는 새로운 직렬화 메커니즘을 배워야하지만 Proto DataStore가 제공하는 강력한 유형의 이점은 그만한 가치가 있다.
+XML 및 기타 유사한 데이터 형식보다 더 빠르고, 작고, 단순하며, 모호하지 않다.  
+Proto DataStore에서는 새로운 직렬화 메커니즘을 배워야하지만 Proto DataStore가 제공하는 강력한 유형의 이점은 그만한 가치가 있다.  
 
 ### 설정
 Proto DataStore
@@ -227,11 +227,11 @@ message UserPreferences {
   SortOrder sort_order = 2;
 }
 ```
-proto 파일은 컴파일타임에 생성되므로 프로젝트 재빌드를 해준다.
+proto 파일은 컴파일타임에 생성되므로 프로젝트 재빌드를 해준다.  
 
 ### Serialize 변환기 만들기
-DataStore에 proto 파일에서 정의한 데이터 유형을 읽고 쓰는 방법을 알려주려면 Serializer를 구현해야한다. 
-Serializer는 디스크에 데이터가없는 경우 반환되는 기본값도 정의한다.
+DataStore에 proto 파일에서 정의한 데이터 유형을 읽고 쓰는 방법을 알려주려면 Serializer를 구현해야한다.   
+Serializer는 디스크에 데이터가없는 경우 반환되는 기본값도 정의한다.  
 ```kotlin
 object UserPreferencesSerializer : Serializer<UserPreferences> {
     override val defaultValue: UserPreferences = UserPreferences.getDefaultInstance()
