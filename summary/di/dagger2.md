@@ -23,10 +23,10 @@ Annotation을 이용하여 컴파일 단계에서 의존성을 주입하는 구�
 
 
 ### @Component
-Component는 Module과 Inject 사이의 브릿지 역할을 수행한다.
-Component가 Module로 부터 객체를 생성하여 Inject를 요청한 쪽으로 전달한다.
-`@Component`는 `interface` 또는 `abstract` 클래스에 붙힐 수 있다.
-`@Component` Annotation이 달린 `interface`,`abstract` 클래스에는 적어도 하나의 추상 컴포넌트 메소드가 있어야한다.
+Component는 Module과 Inject 사이의 브릿지 역할을 수행한다.  
+Component가 Module로 부터 객체를 생성하여 Inject를 요청한 쪽으로 전달한다.  
+`@Component`는 `interface` 또는 `abstract` 클래스에 붙힐 수 있다.  
+`@Component` Annotation이 달린 `interface`,`abstract` 클래스에는 적어도 하나의 추상 컴포넌트 메소드가 있어야한다.  
 
 #### Component의 메소드
 - Provision Method : 파라미터가 없고, injection 시킬 객체를 리턴
@@ -44,7 +44,7 @@ public interface CoffeeComponent {
 
 #### @BindInstance
 `@BindsInstance`는 
-- Component 빌더내의 메소드에 추가하거나 Component 팩토리내의 파라미터로 추가하여 객체를 Component가 가지고 있는 특정 키에 바인딩한다.
+- Component 빌더내의 메소드에 추가하거나 Component 팩토리내의 파라미터로 추가하여 객체를 Component가 가지고 있는 특정 키에 바인딩한다  
 - 빌더나 팩토리에게 파라미터로 넘겨줌으로써 컴포넌트가 이 객체들을 관리하고, 요청시 객체를 넘겨준다
 ```
 @Component.Builder

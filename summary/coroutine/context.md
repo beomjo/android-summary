@@ -13,9 +13,9 @@
 ## Scope
 
 #### GlobalScope
-어플리케이션이 동작하는동안 별도의 생명주기를 관리하지않고 사용할 수 있는 Scope로
+어플리케이션이 동작하는동안 별도의 생명주기를 관리하지않고 사용할 수 있는 Scope로  
 안드로이드 앱이 처음 시작할때부터 종료할 때 까지 하나의 CoroutineContext안에서 동작한다.  
-Dispatchers.Default의 스레드를 사용한다.
+Dispatchers.Default의 스레드를 사용한다.  
 
 #### CoroutineScope
 특정한 목적의 Dispatcher를 지정하여 새로운 Coroutine의 범위를 정의한다.  
@@ -95,12 +95,12 @@ Job으로 Coroutine의 상태를 확인할 수 있고 제어할 수 있다.
 
 
 ## Channel
-Channel은 개념적으로 [BlockingQueue](https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/BlockingQueue.html)와 유사하다.
+Channel은 개념적으로 [BlockingQueue](https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/BlockingQueue.html)와 유사하다.  
 BlockingQueue에서 put을 할때 가득 차있다면 Block하여 대기하고, take를 할때 비어있다면 Block하여 대기한다
-Channel은 비슷하게 send와 receive를 사용한다.
-따라서 여러 coroutine 사이에 순서를 보장받으며 공유하여 사용할 수 있다.
-또한 Channel은 Queue와 달리 더 이상 사용하지 않을때 close 시킬 수 있다.
-Channel이 close되었을 때, close전까지 send했던 Element들은 남아있다.
+Channel은 비슷하게 send와 receive를 사용한다.  
+따라서 여러 coroutine 사이에 순서를 보장받으며 공유하여 사용할 수 있다.  
+또한 Channel은 Queue와 달리 더 이상 사용하지 않을때 close 시킬 수 있다.  
+Channel이 close되었을 때, close전까지 send했던 Element들은 남아있다.  
 
 
 #### Functions
