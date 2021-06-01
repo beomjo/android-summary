@@ -60,6 +60,7 @@ Hilt는 Dagger Component를 직접 정의하거나 인스턴스화 하지 않는
 대신 Hilt는 사용자를 위해 미리 정의된 구성요소를 제공한다.  
 Hilt는 안드로이드 애플리케이션의 다양한 라이프 사이클에 자동으로 통합되는 Component를 내장하고 있다.  
 ![image](https://user-images.githubusercontent.com/39984656/106835582-ebce4680-66da-11eb-9e55-b75445aba560.png)  
+  
 각 Component위의 어노테이션은 각 Component LifeCycle에 대한 바인딩 범위를 지정하는데 사용되는 어노테이션이다.  
 각 Component 아래 화살표는 하위 Component를 가리킨다.  
 일반적으로 하위 Component의 바인딩은 상위 Component의 바인딩에 종속성을 가질 수 있다.  
