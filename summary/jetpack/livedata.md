@@ -1,16 +1,16 @@
 # LiveData
 
 ## LiveData란?
- LiveData는 데이터를 저장하고 변화를 관찰할 수 있는 Data Holder 클래스이다.
- LiveData는 또한 Activity, Fragment, Service등의 안드로이드 컴포넌트의 LifeCycle(생명주기)를 인식한다. 
- 그리고 생명주기가 Active(활성)일때만 데이터를 업데이트한다.
+ LiveData는 데이터를 저장하고 변화를 관찰할 수 있는 Data Holder 클래스이다.  
+ LiveData는 또한 Activity, Fragment, Service등의 안드로이드 컴포넌트의 LifeCycle(생명주기)를 인식한다.   
+ 그리고 생명주기가 Active(활성)일때만 데이터를 업데이트한다.  
  
  ![image](https://user-images.githubusercontent.com/39984656/109813128-47efa080-7c70-11eb-8479-1b9521523b29.png)
 
 Activity를 예로 보면 
-`onStart()`, `onResume()`같이 Active(활성)상태 일때만 변경을 처리하고,
-`onStop()`같이 다른 화면으로 넘어가고있는 상태라면 데이터 변경을 처리하지 않는다.
-그리고 다시 원래 화면으로 돌아와 `onResume()`이 호출되면 마지막에 변경된 최신 데이터를 실행한다.
+`onStart()`, `onResume()`같이 Active(활성)상태 일때만 변경을 처리하고,  
+`onStop()`같이 다른 화면으로 넘어가고있는 상태라면 데이터 변경을 처리하지 않는다.  
+그리고 다시 원래 화면으로 돌아와 `onResume()`이 호출되면 마지막에 변경된 최신 데이터를 실행한다.  
 
 
 ## 장점
@@ -30,7 +30,7 @@ Activity를 예로 보면
 
 
 ## LiveData 확장
-LiveData를 상속하여 자신만의 LiveData클래스를 구현할 수 있다
+LiveData를 상속하여 자신만의 LiveData클래스를 구현할 수 있다.  
 
 LiveData의 메소드
 - observe() : LifeCycleOwner수명 내의 관찰자 목록에 지정된 관찰자 추가
@@ -201,10 +201,9 @@ switchMap(LiveData<X> source, Function<X, LiveData<Y>> switchMapFunction)
 ```
 
 ### [MediatorLiveData](https://developer.android.com/reference/androidx/lifecycle/MediatorLiveData)
-Mediator는 중개자 라는 뜻으로
-MediatorLiveData는 여러 데이터소스를 한곳에서 Observe할때 사용한다
-서, 각각의 데이터 소스들이 변경되는 것을 따로 따로 관찰하는 것이 아니라 어떤 소스에서 변경이 일어나든 한번에 관찰하려고 하는 것이다.
-Rx의 merge와 비슷하다고 보면 된다.
+Mediator는 중개자 라는 뜻으로 MediatorLiveData는 여러 데이터소스를 한곳에서 Observe할때 사용한다.  
+서, 각각의 데이터 소스들이 변경되는 것을 따로 따로 관찰하는 것이 아니라 어떤 소스에서 변경이 일어나든 한번에 관찰하려고 하는 것이다.  
+Rx의 merge와 비슷하다고 보면 된다.  
 
 ```kotlin
  LiveData liveData1 = ...;

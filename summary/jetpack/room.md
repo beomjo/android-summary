@@ -1,8 +1,8 @@
 # Room
 
 ## Room 이란 ?
-Room은 안드로이드 앱에서 SQLite 데이터베이스를 쉽고 편리하게 사용할 수 있도록 한다. 
-Entity, DAO, Room Database 총 세 개의 구성 요소를 통해 Room 데이터베이스 라이브러리가 구성한다.
+Room은 안드로이드 앱에서 SQLite 데이터베이스를 쉽고 편리하게 사용할 수 있도록 한다.   
+Entity, DAO, Room Database 총 세 개의 구성 요소를 통해 Room 데이터베이스 라이브러리가 구성한다.  
 
 
 ## 구성요소
@@ -56,9 +56,9 @@ data class Word(
 
 
 ## DAO
-DAO(Data Access Object)에서 SQL 쿼리를 지정하고 메서드 호출로 연결한다
-DAO는 인터페이스 또는 추상클래스여야 한다.
-기본적으로 쿼리는 별도의 스레드에서 실행되어야 한다.
+DAO(Data Access Object)에서 SQL 쿼리를 지정하고 메서드 호출로 연결한다.  
+DAO는 인터페이스 또는 추상클래스여야 한다.  
+기본적으로 쿼리는 별도의 스레드에서 실행되어야 한다.  
 
 ```kotlin
 @Dao
@@ -82,8 +82,8 @@ interface WordDao {
 
 
 ## Room Database 구현
-Room Database 클래스는 추상적이고 확장되어야한다.
-일반적으로 전체 앱에대해 Room Database의 인스턴스는 하나만 필요하다.
+Room Database 클래스는 추상적이고 확장되어야한다.  
+일반적으로 전체 앱에대해 Room Database의 인스턴스는 하나만 필요하다.  
 
 ```kotlin
 @Database(entities = [Word::class], version = 1, exportSchema = false)
@@ -111,7 +111,7 @@ abstract class WordRoomDataBase : RoomDatabase() {
 }
 ```
 
-- WordRoomDataBase 클래스에 데이터베이스가 되도록 `@Database` 어노테이션을 설정한다. 데이터베이스에 속한 엔티티를 선언하고, 버전번호를 설정한다. 
+- WordRoomDataBase 클래스에 데이터베이스가 되도록 `@Database` 어노테이션을 설정한다. 데이터베이스에 속한 엔티티를 선언하고, 버전번호를 설정한다 
 - 마이그레이션을 사용하지 않는다면 빌드 경고를 피하기 위해 `exportSchema`를 false로 설정한다
     - [Room Database 마이그레이션 이해하기](https://medium.com/androiddevelopers/understanding-migrations-with-room-f01e04b07929)
 - 데이터베이스는 각 @Dao에 대한 추상메소드를 통해 dao를 노출한다
