@@ -102,7 +102,7 @@ ViewPager2에서는 FragmentStateAdapter를 사용한다.
 
 ## TabLayout과 함께 사용
 기존 ViewPager에서는 TabLayout이 ViewPager의 하위 요소로 선언되지만  
-ViewPager 2에서는 TabLayout이 ViewPager와 동등한 수준으로 선언된다.  
+ViewPager 2에서는 TabLayout이 ViewPager와 동등한 수준으로 선언된다.  
 ```xml
  <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
