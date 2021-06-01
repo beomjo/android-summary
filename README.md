@@ -13,6 +13,7 @@
     - [MediaBrowser](./summary/android_audio/media_brwoser.md)
   - [ViewPager2](./summary/viewpager2/summary.md) 
   - [ViewBinding](./summary/viewbinding/summary.md)
+  - [CustomView](./summary/customview/summary.md)
 - Kotlin
   - Coroutine
     - [Basic](./summary/coroutine/basic.md)
