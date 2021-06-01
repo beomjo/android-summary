@@ -1,10 +1,10 @@
 # ViewBinding
 
 ## ViewBinding이란?
-ViewBinding을 사용하여 뷰와 상호작용하는 코드를 쉽게 작성 가능하다.
-ViewBinding은 XML 레이아웃 파일의 결합 클래스를 생성한다.
-바인딩 클래스의 인스턴스에는 레이아웃에 ID가 있는 모든 뷰의 직접 참조가 포함된다.
-ViewBinding을 사용하여 `findViewById`를 대체할 수 있다.
+ViewBinding을 사용하여 뷰와 상호작용하는 코드를 쉽게 작성 가능하다.  
+ViewBinding은 XML 레이아웃 파일의 결합 클래스를 생성한다.  
+바인딩 클래스의 인스턴스에는 레이아웃에 ID가 있는 모든 뷰의 직접 참조가 포함된다.  
+ViewBinding을 사용하여 `findViewById`를 대체할 수 있다.  
 
 
 ## 설정
@@ -31,19 +31,19 @@ android {
 
 ## findViewById와 차이점
 - Null Safety 
-    - 뷰 결합은 뷰의 직접 참조를 생성하므로 유효하지 않은 뷰 ID로 인해 null 포인터 예외가 발생할 위험이 없다.
+    - 뷰 결합은 뷰의 직접 참조를 생성하므로 유효하지 않은 뷰 ID로 인해 null 포인터 예외가 발생할 위험이 없다  
     - 레이아웃의 일부 구성에만 뷰가 있는 경우 결합 클래스에서 참조를 포함하는 필드가 @Nullable로 표시된다
 - Type Safe 
     - 각 바인딩 클래스에 있는 필드의 유형이 XML 파일에서 참조하는 뷰와 일치한다(클래스 변환 예외가 발생할 위험이 없음)
 
 
 ## DataBinding과 비교  
-ViewBinding과 DataBinding은 모두 뷰를 직접 참조할 수 있는 Binding 클래스를 생성하는 공통점이 있다.
-ViewBinding은 DataBinding과 비교하여 아래와 같은 이점이 있다.
+ViewBinding과 DataBinding은 모두 뷰를 직접 참조할 수 있는 Binding 클래스를 생성하는 공통점이 있다.  
+ViewBinding은 DataBinding과 비교하여 아래와 같은 이점이 있다.  
 
 ### DataBinding과 비교하였을 때 ViewBinding의 이점
 - 더 빠른 컴파일
-    - ViewBinding에는 Annotation Process가 필요하지 않으므로 컴파일 시간이 더 짧다
+    - ViewBinding에는 Annotation Process가 필요하지 않으므로 컴파일 시간이 더 짧다
 - 사용 편의성
     -  ViewBinding에는 특별히 태그된 XML 레이아웃 파일이 필요하지 않으므로 앱에서 더 신속하게 채택할 수 있다
     -  모듈에서 뷰 결합을 사용 설정하면 모듈의 모든 레이아웃에 ViewBinding이 자동으로 적용된다
@@ -55,7 +55,7 @@ ViewBinding은 DataBinding과 비교하여 아래와 같은 이점이 있다.
 
 
 ## 사용
-result_profile.xml 이라는 레이아웃 파일을 뷰바인딩으로 설정해보자.
+result_profile.xml 이라는 레이아웃 파일을 뷰바인딩으로 설정해보자.  
 ```xml
 <LinearLayout ... >
         <TextView android:id="@+id/name" />
@@ -75,7 +75,7 @@ override fun onCreate(savedInstanceState: Bundle) {
     setContentView(binding.root)
 }   
 ```
-위와같이 설정한 후 binding 클래스 인스턴스를 통하여 뷰를 참조할 수 있다.
+위와같이 설정한 후 binding 클래스 인스턴스를 통하여 뷰를 참조할 수 있다.  
 ```kotlin
 binding.name.text = viewModel.name
 binding.button.setOnClickListener { viewModel.userClicked() }
