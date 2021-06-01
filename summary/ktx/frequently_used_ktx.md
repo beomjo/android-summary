@@ -23,7 +23,7 @@ searchEditText.doAfterTextChanged {
 
 
 ## SharedPreference Extensions
-SharedPreferences에 값을 저장할때는 기존에 다음과 같이 사용한다
+SharedPreferences에 값을 저장할때는 기존에 다음과 같이 사용한다.
 ```kotlin
 sharedPreferences
   .edit()
@@ -78,10 +78,10 @@ supportFragmentManager.commit {
 ```
 
 ### LiveDate Extensions
-LiveData는 수명주기를 인식하기 대문에 주로 UI계층에서 사용되는 관창가능한 데이터이다.
-LiveData Extensions를 사용하면 Coroutine Flow와 LiveDate를 자유롭게 변환가능하다.
-
-먼저 아래와같이 의존성을 추가한다.
+LiveData는 수명주기를 인식하기 대문에 주로 UI계층에서 사용되는 관창가능한 데이터이다.  
+LiveData Extensions를 사용하면 Coroutine Flow와 LiveDate를 자유롭게 변환가능하다.  
+  
+먼저 아래와같이 의존성을 추가한다.  
 ```
 dependencies {
   implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
@@ -94,8 +94,8 @@ val showProgress = _showProgress.asLiveData()
 ```
 
 ### Lifecycle Extensions
-Coroutine은 Android 개발에 중요한 부분이 되었다.
-일반적으로 Coroutine을 사용하는 시나리오중 하나는 Fragment에서 Coroutine을 시작하는것이며 많은 코드 작성이 필요하다.
+Coroutine은 Android 개발에 중요한 부분이 되었다.  
+일반적으로 Coroutine을 사용하는 시나리오중 하나는 Fragment에서 Coroutine을 시작하는것이며 많은 코드 작성이 필요하다.  
 
 ```kotlin
 class TestFragment : Fragment(R.layout.fragment_test), CoroutineScope {
