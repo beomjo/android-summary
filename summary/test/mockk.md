@@ -28,9 +28,9 @@
 
 
 ## MockK
-MockK는 코틀린을 위한 Mock 프레임워크이다. 
-자바에서 주로 사용하는 Mockito 유사해서 약간만 노력하면 쉽게 적응할 수 있다.
-간단한 사용법을 정리하며, 자세한 모든 사용법은 [mockk.io](https://mockk.io/)에서 확인하자.
+MockK는 코틀린을 위한 Mock 프레임워크이다.  
+자바에서 주로 사용하는 Mockito 유사해서 약간만 노력하면 쉽게 적응할 수 있다.  
+간단한 사용법을 정리하며, 자세한 모든 사용법은 [mockk.io](https://mockk.io/)에서 확인하자.  
 
 
 ## 장점
@@ -71,7 +71,7 @@ confirmVerified(car)
 
 
 ## 어노테이션사용
-어노테이션을 사용하여 mock객체 생성을 단순화 할 수 있다.
+어노테이션을 사용하여 mock객체 생성을 단순화 할 수 있다.  
 ```kotlin
 class TrafficSystem {
   lateinit var car1: Car
@@ -126,10 +126,10 @@ confirmVerified(car)
 
 
 ## Relaxed mock
-`relaxed mock`는 PrimitiveType을 반환하는 모든 함수에 대해 기본값을 반환하는 mock 객체이다.
-이를 통해 각 경우에 대한 Stubbing(when)을 건너뛰고 필요한 것을 stub할 수 있다.
-`relaxed mock`의 메소드를 호출하면 `0`, `false`, `""`등과 같은 기본값을 반환한다.
-ReferenceType을 반환하는 메소드는 Stubbing해주어야한다
+`relaxed mock`는 PrimitiveType을 반환하는 모든 함수에 대해 기본값을 반환하는 mock 객체이다.  
+이를 통해 각 경우에 대한 Stubbing(when)을 건너뛰고 필요한 것을 stub할 수 있다.  
+`relaxed mock`의 메소드를 호출하면 `0`, `false`, `""`등과 같은 기본값을 반환한다.  
+ReferenceType을 반환하는 메소드는 Stubbing해주어야한다.  
 ```kotlin
 //given
 val car = mockk<Car>(relaxed = true)
@@ -521,8 +521,7 @@ verify(loginSuccessObserver.onChanged(eq(isLoginSuccess)))
 
 
 ## 확장함수
-확장함수도 mocking 할 수 있다.
-
+확장함수도 mocking 할 수 있다.  
 객체나 클래스의 경우 단지 `mockk`로 생성하는 것만으로도 확장함수를 mocking 할 수 있다.
 ```kotlin
 data class Obj(val value: Int)
@@ -597,9 +596,8 @@ verifySequence {
 }
 ```
 
-private 함수 호출을 확인하려면 `spyk` 와 `recordPrivateCalls = true`로 설정해야 한다
-
-또한 아래 문법을 사용하여도 private 함수를 검증할 수 있다.
+private 함수 호출을 확인하려면 `spyk` 와 `recordPrivateCalls = true`로 설정해야 한다.  
+또한 아래 문법을 사용하여도 private 함수를 검증할 수 있다.  
 ```kotlin
 val mock = spyk(Team(), recordPrivateCalls = true)
 

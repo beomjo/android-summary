@@ -116,17 +116,17 @@ class TestFragment : Fragment(R.layout.fragment_test), CoroutineScope {
   }
 }
 ```
-CoroutineScope를 구현하고 Context를 제공하여야하며, 필요하지않은때 Coroutine을 지워야한다.
-다행이 Lifecycle Extensions를 통해 lifecycleOwner 범위에 연결된 CoroutineScope 인스턴스를 제공하는 lifecycleScope가 있다.
-
-사용하려면 아래와 같이 의존성을 추가한다
+CoroutineScope를 구현하고 Context를 제공하여야하며, 필요하지않은때 Coroutine을 지워야한다.  
+다행이 Lifecycle Extensions를 통해 lifecycleOwner 범위에 연결된 CoroutineScope 인스턴스를 제공하는 lifecycleScope가 있다.  
+  
+사용하려면 아래와 같이 의존성을 추가한다.   
 ```
 dependencies {
   implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
 }
 ```
 
-이제 viewLifecycleOwner의 lifecycleScope를 사용하고, Fragment가 파괴되면 Coroutine이 자동으로 취소된다.
+이제 viewLifecycleOwner의 lifecycleScope를 사용하고, Fragment가 파괴되면 Coroutine이 자동으로 취소된다.  
 ```kotlin
 class TestFragment : Fragment(R.layout.fragment_test) {
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
