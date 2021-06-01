@@ -94,7 +94,7 @@ fun main() = runBlocking<Unit> {
 ```
 
 ### Flows
-List가 모든 연산을 수행한 후 한번에 모든값을 반환하는것과 반대로
+List가 모든 연산을 수행한 후 한번에 모든값을 반환하는것과 반대로  
 Flow는 Sequnce와 같이 순차적으로 값을 내보내고 정상적으로 완료 또는 예외가 발생하는 비동기 스트림이다.
 ```
 fun simple(): Flow<Int> = flow { // flow builder
@@ -135,9 +135,9 @@ I'm not blocked 3
 
 
 ## 플로우는 차갑다(Flows are cold)
-flow는 sequnce와 비슷하게 cold 스트림이다
-`flow{ }` 빌더가 `collect()` 를 호출할 때 까지 실행되지 않는다
-이 때문에 `suspend` 로 선언하지 않아도 되는것이다.
+flow는 sequnce와 비슷하게 cold 스트림이다.  
+`flow{ }` 빌더가 `collect()` 를 호출할 때 까지 실행되지 않는다.  
+이 때문에 `suspend` 로 선언하지 않아도 되는것이다.  
 
 
 ## 플로우의 취소(Flow cancellation basics)
@@ -177,9 +177,9 @@ Done
 
 
 ## 중간 연산자(Intermedicate flow operators)
-Collection이나 Sequnce와 동일하게 연산자로 변환할 수 있다.
-하지만 중요한 차이점은 연산자로 수행되는 코드블럭에서 `suspend` 함수를 호출할 수 있다.
-익숙한 `map()`, `filter()` 등이 대표적인 예시이다.
+Collection이나 Sequnce와 동일하게 연산자로 변환할 수 있다.  
+하지만 중요한 차이점은 연산자로 수행되는 코드블럭에서 `suspend` 함수를 호출할 수 있다.  
+익숙한 `map()`, `filter()` 등이 대표적인 예시이다.  
 ```
 suspend fun performRequest(request: Int): String {
     delay(1000) // imitate long-running asynchronous work
@@ -193,9 +193,9 @@ fun main() = runBlocking<Unit> {
 ```
 
 ### 변환 연산자(Transform operator)
-플로우 변환 연산자들 중에서 가장 일반적인 것은 `transform` 연산자다.
-이 연산자는 `map` 이나 `filter()` 같은 단순한 변환이나 혹은 복잡한 다른 변환들을 구현하기 위해 된다.
-`transform()` 연산자를 사용하여 우리는 임의의 횟수로 임의의 값들을 방출할 수 있습니다.
+플로우 변환 연산자들 중에서 가장 일반적인 것은 `transform` 연산자다.  
+이 연산자는 `map` 이나 `filter()` 같은 단순한 변환이나 혹은 복잡한 다른 변환들을 구현하기 위해 된다.  
+`transform()` 연산자를 사용하여 우리는 임의의 횟수로 임의의 값들을 방출할 수 있습니다.  
 
 ```
 suspend fun performRequest(request: Int): String {
@@ -212,8 +212,8 @@ fun main() = runBlocking<Unit> {
     .collect { response -> println(response) }
 }
 ```
-예를 들어, `transform` 연산자를 사용하여 오래 걸리는 비동기 요청을 수행하기 전에 기본 문자열을 먼저 방출하고
-요청에 대한 응답이 도착하면 그 결과를 방출할 수 있다
+예를 들어, `transform` 연산자를 사용하여 오래 걸리는 비동기 요청을 수행하기 전에 기본 문자열을 먼저 방출하고  
+요청에 대한 응답이 도착하면 그 결과를 방출할 수 있다.  
 ```
 Making request 1 
 response 1 
@@ -224,9 +224,9 @@ response 3
 ```
 
 ### 크기 제한 연산자(Size-limiting operators)
-take같은 크기 제한 중간 연산자는 정의된 제한치에 도달하면 실행을 취소한다.
-코루틴에서 취소는 언제나 예외를 발생시키는 방식으로 수행 되며, 
-이를 통해 `try { ... } finally { ... }` 로 예외 처리등이 가능하다.
+take같은 크기 제한 중간 연산자는 정의된 제한치에 도달하면 실행을 취소한다.  
+코루틴에서 취소는 언제나 예외를 발생시키는 방식으로 수행 되며,   
+이를 통해 `try { ... } finally { ... }` 로 예외 처리등이 가능하다.  
 ```
 fun numbers(): Flow<Int> = flow {
     try {                          
@@ -269,7 +269,7 @@ println(sum)
 
 
 ## 플로우는 순차적이다(Flow are sequential)
-Flow는 Sequnce처럼 기본적으로 `collect()` 등의 종단 연산자가 호출될 때 순차적으로 연산된다
+Flow는 Sequnce처럼 기본적으로 `collect()` 등의 종단 연산자가 호출될 때 순차적으로 연산된다.
 ```
 (1..5).asFlow()
     .filter {
@@ -297,8 +297,8 @@ Filter 5
 ```
 
 ## 플롱우 컨텍스트(Flow Context)
-flow의 수집(종단함수 호출)은 항상 CoroutineContext안에서 수행된다.
-이를 **컨텍스트 보존(context preservation)** 이라 한다.
+flow의 수집(종단함수 호출)은 항상 CoroutineContext안에서 수행된다.  
+이를 **컨텍스트 보존(context preservation)** 이라 한다.  
 
 ```
 fun simple(): Flow<Int> = flow {
@@ -320,7 +320,7 @@ fun main() = runBlocking<Unit> {
 ```
 
 ### withContext를 통한 잘못 된 방출(Wrong emission withContext)
-`flow{ }` 블럭 내에서 `withContext` 로 CoroutineContext를 변경하면 안된다.
+`flow{ }` 블럭 내에서 `withContext` 로 CoroutineContext를 변경하면 안된다.  
 ```
 fun simple(): Flow<Int> = flow {
     kotlinx.coroutines.withContext(Dispatchers.Default) {
@@ -345,7 +345,7 @@ Exception in thread "main" java.lang.IllegalStateException: Flow invariant is vi
 ```
 
 ### flowOn 연산자(flowOn operator)
-flow에서 CoroutineContext를 변경하려면 `flowOn()` 연산자를 사용해야한다.
+flow에서 CoroutineContext를 변경하려면 `flowOn()` 연산자를 사용해야한다.  
 ```
 fun simple(): Flow<Int> = flow {
     for (i in 1..3) {
@@ -361,7 +361,7 @@ fun main() = runBlocking<Unit> {
     } 
 }       
 ```
-`flow {}` 은 Background에서 동작하며, 
+`flow {}` 은 Background에서 동작하며,  
 그 이후 `collect()` 는 MainThread에서 실행된다.
 ```
 [DefaultDispatcher-worker-1 @coroutine#2] Emitting 1
@@ -371,7 +371,7 @@ fun main() = runBlocking<Unit> {
 [DefaultDispatcher-worker-1 @coroutine#2] Emitting 3
 [main @coroutine#1] Collected 3
 ```
-flowOn 연산자가 CoroutineDispatcher를 변경할 buffering 매커니즘을 사용하게되어
+flowOn 연산자가 CoroutineDispatcher를 변경할 buffering 매커니즘을 사용하게되어  
 `flow{ }` 의 기본적인 특성인 순차성을 잃어버리게 될 수 있다.
 
 
@@ -428,8 +428,8 @@ Collected in 1034 ms
 flowOn 연산자가 CoroutineDispatcher를 변경할 경우 동일한 버퍼링 매커니즘을 사용한다.
 
 ### 병합(Conflation)
-flow가 연산의 일부분이나, 상태의 업데이트만을 처리해야 할 경우 `conflate()`를 병합을 사용할 수 있다.
-`conflate()` 을 사용하여 `collect()` 의 처리가 너무 느릴 경우 방출된 중간 값을 스킵할 수 있다
+flow가 연산의 일부분이나, 상태의 업데이트만을 처리해야 할 경우 `conflate()`를 병합을 사용할 수 있다.  
+`conflate()` 을 사용하여 `collect()` 의 처리가 너무 느릴 경우 방출된 중간 값을 스킵할 수 있다.  
 
 ```
 val time = measureTimeMillis {
@@ -442,7 +442,7 @@ val time = measureTimeMillis {
 }   
 println("Collected in $time ms")
 ```
-두 번째 수를 스킵하고 가장 최근 값인 세 번째 수가 `collect()` 로 전달된다.
+두 번째 수를 스킵하고 가장 최근 값인 세 번째 수가 `collect()` 로 전달된다.  
 ```
 1 
 3 
@@ -450,9 +450,9 @@ Collected in 758 ms
 ```
 
 ### 최신 값 처리(Processing the latest value)
-중간값을 모두 삭제하여 최신의 값만을 처리하여 속도를 높이는 방법도 있다.
+중간값을 모두 삭제하여 최신의 값만을 처리하여 속도를 높이는 방법도 있다.  
 `collectLatest()` 를 사용하여 
-새로운 값이 emit될 때 마다 기존의 `collect` 작업을 취소하고 재시작 한다.
+새로운 값이 emit될 때 마다 기존의 `collect` 작업을 취소하고 재시작 한다.  
 ```
 val time = measureTimeMillis {
     simple()
@@ -464,8 +464,8 @@ val time = measureTimeMillis {
 }   
 println("Collected in $time ms")
 ```
-마지막 값 3에 대해서만 `collect` 를 끝까지 수행한다.
-약 `(100ms * 3) + 300ms = 600ms` 의 시간이 소요된다
+마지막 값 3에 대해서만 `collect` 를 끝까지 수행한다.  
+약 `(100ms * 3) + 300ms = 600ms` 의 시간이 소요된다.  
 ```
 Collecting 1
 Collecting 2
@@ -561,7 +561,7 @@ val startTime = System.currentTimeMillis()
 ```
 
 ### flatMapLatest
-`flatMapLatest()`는 새로운 flow가 방출될 때마다 직전 flow를 취소한다
+`flatMapLatest()`는 새로운 flow가 방출될 때마다 직전 flow를 취소한다.
 ```
 val startTime = System.currentTimeMillis() // remember the start time 
 (1..3).asFlow().onEach { delay(100) } // a number every 100 ms 
@@ -570,7 +570,7 @@ val startTime = System.currentTimeMillis() // remember the start time
         println("$value at ${System.currentTimeMillis() - startTime} ms from start") 
     } 
 ```
-새 값이 방출되면 현재 진행중인 `{ requestFlow(it) }` 를 취소한다
+새 값이 방출되면 현재 진행중인 `{ requestFlow(it) }` 를 취소한다.
 ```
 1: First at 142 ms from start
 2: First at 322 ms from start
@@ -579,7 +579,7 @@ val startTime = System.currentTimeMillis() // remember the start time
 ```
 
 ## 플로우 예외(Flow Exception)
-flow는 블럭 안에서 코드가 예외를 발생시키면 예외 발생 상태로 종료된다.
+flow는 블럭 안에서 코드가 예외를 발생시키면 예외 발생 상태로 종료된다.  
 예외처리에 대하여 알아보자
 
 ### 수집기의 try and catch(Collector try and catch)
@@ -612,7 +612,7 @@ Caught java.lang.IllegalStateException: Collected 2
 ```
 
 ### 모든 예외처리(Everthing is cautch)
-`flow{ }` 이나, 중간연산자, 종단연산자 등에서 발생하는 모든 에러도 `try{ } catch{ }` 로 예외처리 가능
+`flow{ }` 이나, 중간연산자, 종단연산자 등에서 발생하는 모든 에러도 `try{ } catch{ }` 로 예외처리 가능  
 ```
 fun simple(): Flow<String> = 
     flow {
@@ -643,11 +643,11 @@ Caught java.lang.IllegalStateException: Crashed on 2
 
 
 ## 예외 투명성(Exception transparency)
-위의 `try{ } catch{  }` 를 사용하는것은 예외투명성을 위반하는 것이다.
-예외 투명성을 보존하기 위한 방법으로 아래와 같은 방법이 있다.
-- `throw` 연산자를 통한 예외 다시 던지기
-- `catch()` 로직에서 `emit()` 을 사용하여 값 타입으로 방출
-- 다른 코드를 통한 예외 무시, 로깅, 기타 처리
+위의 `try{ } catch{  }` 를 사용하는것은 예외투명성을 위반하는 것이다.  
+예외 투명성을 보존하기 위한 방법으로 아래와 같은 방법이 있다.  
+- `throw` 연산자를 통한 예외 다시 던지기  
+- `catch()` 로직에서 `emit()` 을 사용하여 값 타입으로 방출  
+- 다른 코드를 통한 예외 무시, 로깅, 기타 처리  
 
 ### catch 예외 투명성(Transparent catch)
 `catch()`는 업스트림에서 발생한 예외만을 처리한다.
@@ -699,7 +699,7 @@ Caught java.lang.IllegalStateException: Collected 2
 flow의 수집이 종료(정상종료 or 예외발생)되엇을 때 그 이후 동작을 처리해야 할 때 가 있다
 
 ### 선언적인 처리(Declarative handling)
-`onCompletion()` 중간 연산자를 추가하여 
+`onCompletion()` 중간 연산자를 추가하여  
 flow가 완전히 수집되었을때 실행할 로직을 정의할 수 있다.
 
 ```
@@ -708,7 +708,7 @@ simple()
     .collect { value -> println(value) }
 ```
 
-`onCompletion`을 사용함으로써 얻을 수 있는 최대의 이점은
+`onCompletion`을 사용함으로써 얻을 수 있는 최대의 이점은  
 람다에 nullable로 정의되는 Throwable 파라미터를 이용해 수집이 성공적으로 종료되었는지 알 수 있다는 점이다.
 ```
 fun simple(): Flow<Int> = flow {
@@ -723,7 +723,7 @@ fun main() = runBlocking<Unit> {
         .collect { value -> println(value) }
 }            
 ```
-`onCompletion()`연산자는 `catch()`와 달리 예외를 처리하지 않는다
+`onCompletion()`연산자는 `catch()`와 달리 예외를 처리하지 않는다.
 예외는 다운스트림으로 계속 전달된다.
 ```
 1
@@ -732,7 +732,7 @@ Caught exception
 ```
 
 
-다운스트림에서 예외가 발생할 시 Throwable은 null이다
+다운스트림에서 예외가 발생할 시 Throwable은 null이다.
 ```
 fun simple(): Flow<Int> = (1..3).asFlow()
 
@@ -772,11 +772,11 @@ Event: 2
 Event: 3
 Done
 ```
-중간 연사자 이므로 `collect()`를 호출하지 않으면 수집되지않는다.
-
-하지만 이때 `launchIn()`을 사용하면 
-flow의 수집을 다른 Coroutine에서 수행할 수 있으며 
-이를 통해 이후 작성된 코드들이 곧바로 실행되도록 할 수 있다.
+중간 연사자 이므로 `collect()`를 호출하지 않으면 수집되지않는다.  
+  
+하지만 이때 `launchIn()`을 사용하면   
+flow의 수집을 다른 Coroutine에서 수행할 수 있으며   
+이를 통해 이후 작성된 코드들이 곧바로 실행되도록 할 수 있다.  
 ```
 fun events(): Flow<Int> = (1..3).asFlow().onEach { delay(100) }
 
@@ -794,7 +794,7 @@ Event: 2
 Event: 3
 ```
 
-`launchIn()`에 반드시 필요한 인자는 CoroutineScope이다
+`launchIn()`에 반드시 필요한 인자는 CoroutineScope이다.  
 또한 `launchIn()`은 Job을 반환한다.
 
 
@@ -816,7 +816,7 @@ fun main() = runBlocking<Unit> {
 }
 ```
 3까지 숫자를 방출하였고 4번째를 방출하고 난뒤에는 `collect` 를 실행할 수 없으므로 
-에러가 발생한다
+에러가 발생한다.  
 ```
 Emitting 1
 1
@@ -829,8 +829,8 @@ Exception in thread "main" kotlinx.coroutines.JobCancellationException: Blocking
 ```
 
 
-하지만 `asFlow()` 와 같은 대부분의 다른 연산자들은 
-성능상의 이유로 자체적으로 추가 취소 확인을 수행하지 않는다
+하지만 `asFlow()` 와 같은 대부분의 다른 연산자들은  
+성능상의 이유로 자체적으로 추가 취소 확인을 수행하지 않는다.
 ```
           
 fun main() = runBlocking<Unit> {
