@@ -154,7 +154,8 @@ android:text="@{user.displayName ?? user.lastName}"
 ```
 
 ### null 포인터 예외 방지
-생성된 데이터 결합 코드는 자동으로 `null` 값을 확인하고 `null` 포인터 예외를 방지합니다. 예를 들어 `@{user.name}`표현식에서 `user`가 null이면 `user.name`에 null이 기본값으로 할당됩니다. age의 유형이 `int`인 `user.age`를 참조하면 데이터 결합은 0의 기본값을 사용한다. 
+생성된 데이터 결합 코드는 자동으로 `null` 값을 확인하고 `null` 포인터 예외를 방지한다.  
+ 예를 들어 `@{user.name}`표현식에서 `user`가 null이면 `user.name`에 null이 기본값으로 할당됩니다. age의 유형이 `int`인 `user.age`를 참조하면 데이터 결합은 0의 기본값을 사용한다. 
 
 ### 컬렉션
 `Array`, `List`, `Map`과 같은 일반 컬렉션에는 편의상 `[]` 연산자를 사용하여 액세스할 수 있다.  
@@ -297,7 +298,8 @@ import를 사용하면 레이아웃 파일 내에서 클래스를 쉽게 참조�
 ```
 
 #### alias
-클래스 이름 충돌이 발생하면 클래스 중 하나의 이름을 별칭으로 바꿀 수 있다. 다음 예는 `com.example.real.estate` 패키지의 View 클래스 이름을 Vista로 바꾼다.  
+클래스 이름 충돌이 발생하면 클래스 중 하나의 이름을 별칭으로 바꿀 수 있다.  
+다음 예는 `com.example.real.estate` 패키지의 View 클래스 이름을 Vista로 바꾼다.  
 ```xml
 <import type="android.view.View"/>
 <import type="com.example.real.estate.View" alias="Vista"/>
@@ -322,7 +324,7 @@ import를 사용하면 레이아웃 파일 내에서 클래스를 쉽게 참조�
 ```
 
 표현식에서 정적 필드 및 메서드를 참조할 때 가져온 유형을 사용할 수도 있다.   
-다음 코드는 `MyStringUtils` 클래스를 가져와서 `capitalize` 메서드를 참조합니다.  
+다음 코드는 `MyStringUtils` 클래스를 가져와서 `capitalize` 메서드를 참조한다.  
 ```xml
 <data>
     <import type="com.example.MyStringUtils"/>
@@ -657,7 +659,7 @@ object RecyclerViewBindingAdapter {
 }
 ```
 리스너에는 InverseBindingListener가 매개변수로 포함한다.  
-InverseBindingListener를 사용하면 데이터 결합 시스템에 속성이 변경되었음을 알릴 수 있습니다.  
+InverseBindingListener를 사용하면 데이터 결합 시스템에 속성이 변경되었음을 알릴 수 있다.  
 그러면 시스템은 `@InverseBindingAdapter`를 사용하여 어노테이션이 추가된 메서드 호출을 시작할 수 있다.  
 
 
