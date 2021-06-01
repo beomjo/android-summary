@@ -156,7 +156,7 @@ assertEquals("", result)
 
 
 ## Unit을 반환하는 함수에 대한 Mock relaxed 
-만약 Unit을 반환하는 함수가 있다면 따로 Stubbing 하지않고 아래와같이 사용할 수 있다.
+만약 Unit을 반환하는 함수가 있다면 따로 Stubbing 하지않고 아래와같이 사용할 수 있다.  
 
 ```kotlin
 // mockk 함수의 인자로 전달
@@ -424,8 +424,8 @@ confirmVerified(obj)
 
 
 ## 모든 호출 확인
-모든 호출이 `verify`구문에 의해 확인되었는지 다시 확인하려면 `confirmVerified`를 사용할 수 있다.
-확인 없이 일부 호출이 남아있는경우 예외가 발생한다.
+모든 호출이 `verify`구문에 의해 확인되었는지 다시 확인하려면 `confirmVerified`를 사용할 수 있다.  
+확인 없이 일부 호출이 남아있는경우 예외가 발생한다.  
 ```kotlin
 confirmVerified(mock1, mock2)
 ```

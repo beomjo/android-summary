@@ -4,6 +4,7 @@
 <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
 <!-- code_chunk_output -->
 - [ViewPager2](#viewpager2)
+- [ViewPager2](#viewpager2)
   - [Index](#index)
   - [개요](#개요)
   - [ViewPager2 새로운 기능](#viewpager2-새로운-기능)
@@ -19,10 +20,10 @@
 
 
 ## 개요
-기존의 ViewPager에서는 좌우 스크롤링만 가능했었다. 
-상하 스크롤링기능을 추가하고 싶다면 새로운 모듈을 만들어서 사용해야하는 번거로움이 생길 뿐더러 
-몇몇 기기에서는 스크롤이 버벅거리는 현상이 발생했다.
-ViewPager 2에서 위와같은 문제를 개선하여 사용된다.
+기존의 ViewPager에서는 좌우 스크롤링만 가능했었다.  
+상하 스크롤링기능을 추가하고 싶다면 새로운 모듈을 만들어서 사용해야하는 번거로움이 생길 뿐더러  
+몇몇 기기에서는 스크롤이 버벅거리는 현상이 발생했다.  
+ViewPager 2에서 위와같은 문제를 개선하여 사용된다.  
 
 
 ## ViewPager2 새로운 기능
@@ -54,8 +55,8 @@ dependencies {
 ## 어뎁터
 
 ### View를 통해 페이징하는 경우 RecyclerView.Adapter 사용
-기존 ViewPager에서 PagerAdapter를 사용한 경우
-ViewPager2에서는 RecyclerView Adapter를 사용한다.
+기존 ViewPager에서 PagerAdapter를 사용한 경우  
+ViewPager2에서는 RecyclerView Adapter를 사용한다.  
 ```kotlin
 class CardViewAdapter : RecyclerView.Adapter<CardViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
@@ -84,8 +85,8 @@ viewPager.adapter = CardViewAdapter()
 ```
 
 ### Fragment를 통해 페이징하는 경우 FragmentStateAdapter 사용
-기존 ViewPager에서 FragmentPagerAdapter 또는 FragmentStatePagerAdapter를 사용한 경우
-ViewPager2에서는 FragmentStateAdapter를 사용한다.
+기존 ViewPager에서 FragmentPagerAdapter 또는 FragmentStatePagerAdapter를 사용한 경우  
+ViewPager2에서는 FragmentStateAdapter를 사용한다.  
 ```kotlin
  viewPager.adapter = object : FragmentStateAdapter(this) {
             override fun createFragment(position: Int): Fragment {
@@ -100,8 +101,8 @@ ViewPager2에서는 FragmentStateAdapter를 사용한다.
 
 
 ## TabLayout과 함께 사용
-기존 ViewPager에서는 TabLayout이 ViewPager의 하위 요소로 선언되지만
-ViewPager 2에서는 TabLayout이 ViewPager와 동등한 수준으로 선언된다.
+기존 ViewPager에서는 TabLayout이 ViewPager의 하위 요소로 선언되지만  
+ViewPager 2에서는 TabLayout이 ViewPager와 동등한 수준으로 선언된다.  
 ```xml
  <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -122,10 +123,11 @@ ViewPager 2에서는 TabLayout이 ViewPager와 동등한 수준으로 선언된
 </LinearLayout>
 ```
 
-TabLayout 객체를 ViewPager 객체에 첨부하는 코드를 작성한다. 
-TabLayout은 ViewPager와 통합하는 데는 자체 `setupWithViewPager()` 메서드를 사용하지만 
-ViewPager2와 통합하는 데는 `TabLayoutMediator` 인스턴스가 있어야 한다.
-`TabLayoutMediator` 객체는 TabLayout 객체의 페이지 제목을 생성하는 작업도 처리한다. 따라서 어댑터 클래스가 `getPageTitle()`를 재정의할 필요가 없다.  
+TabLayout 객체를 ViewPager 객체에 첨부하는 코드를 작성한다.  
+TabLayout은 ViewPager와 통합하는 데는 자체 `setupWithViewPager()` 메서드를 사용하지만  
+ViewPager2와 통합하는 데는 `TabLayoutMediator` 인스턴스가 있어야 한다.  
+`TabLayoutMediator` 객체는 TabLayout 객체의 페이지 제목을 생성하는 작업도 처리한다.   
+따라서 어댑터 클래스가 `getPageTitle()`를 재정의할 필요가 없다.  
 
 ```kotlin
 tabLayout = findViewById(R.id.tabs)
@@ -136,9 +138,9 @@ TabLayoutMediator(tabLayout, viewPager) { tab, position ->
 
 
 ## 중첩 스크롤 지원
-NestedScrollableHost를 사용하면
-viewPager2와 그 내부 요소의 스크롤 방향이 같을 때, 스크롤이 혼선되는 경우가 있다.
-이 때 자식 뷰가 우선적으로 스크롤을 인식할 수 있도록 할 수 있다.
+NestedScrollableHost를 사용하면  
+viewPager2와 그 내부 요소의 스크롤 방향이 같을 때, 스크롤이 혼선되는 경우가 있다.  
+이 때 자식 뷰가 우선적으로 스크롤을 인식할 수 있도록 할 수 있다.  
 
 ```xml
 <!-- item_nested_recyclerviews.xml -->
@@ -285,7 +287,7 @@ class ParallelNestedScrollingActivity : Activity() {
 
 
 ## 가짜 드래그(Fake Drag)지원
-다른 구성요소에서 드래그 이벤트를 감지하고 이를 ViewPager2에 위임할 수 있다
+다른 구성요소에서 드래그 이벤트를 감지하고 이를 ViewPager2에 위임할 수 있다.  
 
 ```kotlin
 class FakeDragActivity : FragmentActivity() {
