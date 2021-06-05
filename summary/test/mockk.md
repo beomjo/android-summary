@@ -432,7 +432,7 @@ confirmVerified(mock1, mock2)
 
 
 ## verify 시간초과
-`verify`가 통과되거나 시간 초과에 도달할 때까지 기다린다.
+`verify`가 통과되거나 시간 초과에 도달할 때까지 기다린다.  
 ```kotlin
 mockk<MockCls> {
     every { sum(1, 2) } returns 4
