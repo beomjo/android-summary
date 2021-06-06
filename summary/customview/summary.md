@@ -17,7 +17,7 @@
 
 
 ## CustomView를 만들기 위한 ViewLifeCycle 알아보기  
-View가 생성되고, ParentView에 addView가 호출되면 `onAttachToWindow()` 가 호출되고, 크기를 결정하고, 레이아웃을 그리고, Canvas위에 그리는 `onDraw()`까지 호출된다  
+View가 생성되고, ParentView에 addView가 호출되면 `onAttachToWindow()` 가 호출되고, 크기를 결정하고, 레이아웃을 그리고, Canvas위에 그리는 `onDraw()`까지 호출된다.  
 
 ![image](https://user-images.githubusercontent.com/39984656/120372413-20cd6b80-c352-11eb-89b1-b0c5cd654d69.png)
 
