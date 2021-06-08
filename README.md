@@ -14,6 +14,7 @@
   - [ViewPager2](./summary/viewpager2/summary.md) 
   - [ViewBinding](./summary/viewbinding/summary.md)
   - [CustomView](./summary/customview/summary.md)
+  - Annotation Processor - TBD
 - Kotlin
   - Coroutine
     - [Basic](./summary/coroutine/basic.md)
