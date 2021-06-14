@@ -26,4 +26,32 @@ Annotation Processor는 Java 컴파일러의 플러그인의 일종으로 일반
 ![image](https://user-images.githubusercontent.com/57612082/121766924-303d8780-cb90-11eb-8b7b-964bbd3bd144.png)
 
 
-## Custom Annotation, Annotation Processor
+## Annotation, Annotation Processor 만들기
+
+### 설정  
+1. annotation module 추가하기
+<img width="746" alt="스크린샷 2021-06-13 오후 8 37 36" src="https://user-images.githubusercontent.com/57612082/121805781-9953f680-cc87-11eb-9c13-028c24a7fd65.png">  
+  
+  
+2. annotation_processor module 추가하기  
+<img width="745" alt="스크린샷 2021-06-13 오후 8 38 03" src="https://user-images.githubusercontent.com/57612082/121805783-9a852380-cc87-11eb-91d2-04a40fe1547e.png">  
+
+
+3. 의존성 설정
+app/build.gradle
+```
+dependencies {
+    implementation project(':annotation')
+    kapt project(':annotation_processor')
+}
+```
+
+annotation_processor/build.gradle
+```
+dependencies {
+    implementation project(':annotation')
+}
+```
+
+### Custom Annotation 선언
+
