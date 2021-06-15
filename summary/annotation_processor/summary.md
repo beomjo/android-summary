@@ -30,11 +30,11 @@ Annotation Processor는 Java 컴파일러의 플러그인의 일종으로 일반
 
 ### 설정  
 1. annotation module 추가하기
-<img width="746" alt="스크린샷 2021-06-13 오후 8 37 36" src="https://user-images.githubusercontent.com/57612082/121805781-9953f680-cc87-11eb-9c13-028c24a7fd65.png">  
+![annotation module](https://user-images.githubusercontent.com/57612082/122064421-1f10a700-ce2c-11eb-87b0-61a94569fa7b.png)
   
   
 2. annotation_processor module 추가하기  
-<img width="745" alt="스크린샷 2021-06-13 오후 8 38 03" src="https://user-images.githubusercontent.com/57612082/121805783-9a852380-cc87-11eb-91d2-04a40fe1547e.png">  
+![annotation processor module](https://user-images.githubusercontent.com/57612082/122064443-22a42e00-ce2c-11eb-83cb-49bd29b92cb8.png)
 
 
 3. 의존성 설정
