@@ -53,7 +53,7 @@ dependencies {
 
 ### Annotation, Annotation Processor 만들기
 
-#### Custom Annotation 선언
+#### 1. Custom Annotation 선언
 
 ```kotlin
 @MustBeDocumented
@@ -67,7 +67,7 @@ annotation class PrintFunction
     public enum class AnnotationTarget {
         CLASS, //class, interface, enum 등에 지정할 때
         ANNOTATION_CLASS, //애노테이션 클래스에 지정할 때
-        TYPE_PARAMETER, // Generic type parameter에 지정할 때
+        TYPE_PARAMETER, // Generic type parameter에 지정할 때
         PROPERTY, // 프로퍼티에 지정할 때
         FIELD, // property의 backing field에 지정할 때
         LOCAL_VARIABLE, // 로컬 변수에 애노테이션을 지정할 때
@@ -98,7 +98,7 @@ annotation class PrintFunction
     - Generated Documentation 에 해당 Annotation 도 포함될 수 있는지를 나타낸다
     - 주로 Library 를 만들때 사용한다  
 
-#### AnnotationProcessor 생성
+#### 2. AnnotationProcessor 생성
 애노테이션가 달린 메소드의 클래스이름, 메소드이름을 간략하게 출력하는 Annotation Processor 생성
 ```kotlin
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
@@ -137,10 +137,10 @@ class PrintFunctionProcessor : AbstractProcessor() {
 - getSupportedAnnotationType() : 어떤 애노테이션들을 처리할 지 Set형태로 리턴하게 된다 
 - getSupportedSourceVersion() : 일반적으로 최신의 자바 버전을 리턴
 
-#### AnnotationProcessor 등록
-![image](https://user-images.githubusercontent.com/57612082/122088144-73258680-ce40-11eb-87f7-792bf2f185d1.png)
+#### 3. AnnotationProcessor 등록
+![image](https://user-images.githubusercontent.com/57612082/122088144-73258680-ce40-11eb-87f7-792bf2f185d1.png)  
 `annotation_processor/src/main/resources/META-INF/services` 위치에 `javax.annotation.processing.Processor`을 생성하고  
-파일을 열어 애노테이션 프로세서의 패키지명을 포함하고 있는 CanonicalName을 적는다.
+파일을 열어 애노테이션 프로세서의 패키지명을 포함하고 있는 CanonicalName을 적는다.  
 `com.beomjo.sample.annotation_processor.PrintFunctionProcessor`
 
 
