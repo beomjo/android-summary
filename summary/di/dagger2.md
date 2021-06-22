@@ -81,7 +81,6 @@ abstract fun  bindRandom(secureRandom : SecureRandom): Random
 ```
 ```
 @Module
-@InstallIn(SingletonComponent::class)
 object NetworkModule {
 
   @Provides
