@@ -5,10 +5,7 @@
   - Transition
     - [Shared Element Transition](./summary/shared_element_transition/overview.md)
   - Notification
-    - Channels
     - [Expandable](./summary/notification/expandable/overview.md)
-    - Notification Group
-    - Custom Notification Layout
   - Audio
     - [MediaBrowser](./summary/android_audio/media_brwoser.md)
   - [ViewPager2](./summary/viewpager2/summary.md) 
@@ -27,7 +24,6 @@
   - Dagger
     - [Dagger 2](./summary/di/dagger2.md)
     - [Dagger Hilt](./summary/di/dagger_hilt.md)
-  - Koin - TBD
 - Jetpack
   - [LiveData](./summary/jetpack/livedata.md)
   - [ViewModel](./summary/jetpack/viewmodel.md)
