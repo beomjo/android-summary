@@ -13,7 +13,7 @@
   - [CustomView](./summary/customview/summary.md)
   - [Annotation Processor](./summary/annotation_processor/summary.md) 
   - RecyclerView
-    -  DiffUtil - TBD
+    -  [DiffUtil](./summary/recyclerview/diff_util.md)
     -  ConcatAdapter - TBD
 - Kotlin
   - Coroutine
