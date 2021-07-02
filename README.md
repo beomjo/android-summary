@@ -14,6 +14,7 @@
   - [Annotation Processor](./summary/annotation_processor/summary.md) 
   - RecyclerView
     -  DiffUtil - TBD
+    -  ConcatAdapter - TBD
 - Kotlin
   - Coroutine
     - [Basic](./summary/coroutine/basic.md)
