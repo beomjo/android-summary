@@ -33,7 +33,7 @@
   - [DataBinding](./summary/jetpack/databinding.md)
   - [DataStore](./summary/jetpack/data_store.md)
   - [Room](./summary/jetpack/room.md)
-  - Paging3 - TBD
+  - [Paging3](./summary/paging3/summary.md)
 - Test
    - [MockK](summary/test/mockk.md)
 - Etc
