@@ -1,0 +1,4 @@
+# ConcatAdapter
+
+## ConcatAdapter란?
+
