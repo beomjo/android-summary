@@ -190,13 +190,13 @@ class MyApplication : MyBaseApplication() {
 ```
 
 
-## Android Entry Points
+## Android Entry Point
 
 ### Android Types
-응용프로그램에서 멤버 주입을 활성화 한 후에는 `@AndroidEntryPoints` 어노테이션을 사용하여  
+응용프로그램에서 멤버 주입을 활성화 한 후에는 `@AndroidEntryPoint` 어노테이션을 사용하여  
 다른 Android 클래스에서 멤버 주입을 활성화 할 수 있다.  
 
-다음 유형에서 `@AndroidEntryPoints`를 사용할 수 있다.  
+다음 유형에서 `@AndroidEntryPoins`를 사용할 수 있다.  
 1. Activity
 2. Fragment
 3. View
