@@ -143,11 +143,11 @@ open class VolatileLiveData<T> : MutableLiveData<T>() {
         }
     }
 }
-```
+```  
 
 
 ## LiveData와 데이터바인딩
-Databinding과 LiveData를 함께 쓰면 편리하다.
+Databinding과 LiveData를 함께 쓰면 편리하다.  
 ```xml
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
