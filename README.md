@@ -37,7 +37,7 @@
 - Test
    - [MockK](summary/test/mockk.md)
 - Gradle
-   - [Kotlin Dsl + buildSrc 으로 의존성 관리](summary/gradle/kotlin_dsl_build_src.md)
+   - [Kotlin DSL + buildSrc 으로 의존성 관리](summary/gradle/kotlin_dsl_build_src.md)
 - Etc
     - [Glide](summary/etc/glide.md)
   
