@@ -34,6 +34,7 @@
   - [DataStore](./summary/jetpack/data_store.md)
   - [Room](./summary/jetpack/room.md)
   - [Paging3](./summary/paging3/summary.md)
+  - [Navigation Component](/summary/jetpack/navigation.md)
 - Test
    - [MockK](summary/test/mockk.md)
 - Gradle
