@@ -83,6 +83,12 @@ app:navGraph="@navigation/nav_sample"
 app:defaultNavHost="true" />
 ```
 
+- `android:name` 속성은 NavHost 구현의 클래스이름을 넣는다
+- `app:navGraph` 속성은 NavHostFragment를 그래프와 연결한다
+- `app:defaultNavHost="true"` 속성을 사용하면 NavHostFragment가 시스템 뒤로 버튼을 가로챈다 
+    - 하나의 NavHost만 기본값으로 지정할 수 있다 
+    - 동일한 레이아웃에 여러 호스트가 있다면 한 호스트만 기본 NavHost로 지정해야 한다
+
 ### NavController
 NavController는 화면이 이동되는 Navigation을 처리한다.
 NavController는 Graph내에 정의된 정보를 바탕으로
