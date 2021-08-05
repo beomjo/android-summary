@@ -27,7 +27,7 @@ Navigaion Component의 특징중 하나는 세 자기 중요한 부분이 조화
 
 ### Navigation graph
 Navigation graph는 새로운 Android resource 유형으로,  
-xml 파일 형태로 화면 탐색에 관련된 정보를 포함하며, 중심화  한다.   
+xml 파일 형태로 화면 탐색에 관련된 정보를 포함하며, 중심화 한다.   
 
 ![image](https://user-images.githubusercontent.com/39984656/127829853-2d762215-91df-466f-b001-3af352190da3.png)  
 그래프내에서 시각적으로 표시되는 화면들은 목적지(Destination)이라 불린다. 
