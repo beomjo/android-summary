@@ -82,7 +82,7 @@ Paging 라이브러리가 현재 목록을 대체할 새 데이터를 로드하�
 또한 `PageData`는 아래의 매개변수를 전달해야 한다.
 - **PagingConfig**
     - 로드 대기 시간, 초기 로드의 크기 요청 등 PagingSource에서 콘텐츠를 로드하는 방법에 관한 옵션 설정
-    - 정의해야 하는 유일한 필수 매개변수는 각 페이지에 로드해야 하는 항목 수를 가리키는 *페이지 크기*이다
+    - 정의해야 하는 유일한 필수 매개변수는 각 페이지에 로드해야 하는 항목 수를 가리키는 *페이지 크기* 이다
     - 기본적으로 Paging은 로드하는 모든 페이지를 메모리에 유지한다. 사용자가 스크롤할 때 메모리를 낭비하지 않으려면 `PagingConfig`에서 `maxSize` 매개변수를 설정해야한다. 기본적으로 Paging은 로드되지 않은 항목을 집계할 수 있고 `enablePlaceholders` 구성 플래그가 true인 경우 아직 로드되지 않은 콘텐츠의 자리표시자로 null 항목을 반환한다
     - `PagingConfig.pageSize`는 여러 화면의 항목이 포함될 만큼 충분히 커야한다. 페이지가 너무 작으면 페이지의 콘텐츠가 전체 화면을 가리지 않기 때문에 목록이 깜박일 수 있다. 페이지 크기가 클수록 로드 효율이 좋지만 목록이 업데이트될 때 지연 시간이 늘어날 수 있다
     - 기본적으로 `PagingConfig.maxSize`는 무제한이므로 페이지가 삭제되지 않는다. 페이지를 삭제하려면 사용자가 스크롤 방향을 변경할 때 네트워크 요청이 너무 많이 발생하지 않도록 `maxSize`를 충분히 큰 수로 유지해야 한다. 최솟값은 `pageSize + prefetchDistance * 2`이다
@@ -107,5 +107,3 @@ fun getSearchResultStream(query: String): Flow<PagingData<Repo>> {
 `PagingData`를 `RecyclerView`에 바인딩하려면 `PagingDataAdapter`를 사용하면된다.  
 `PagingData` 콘텐츠가 로드될 때마다 `PagingDataAdapter`에서 알림을 받은 다음 `RecyclerView`에 업데이트하라는 신호를 보낸다
 
-
-### 
