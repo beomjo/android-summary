@@ -17,7 +17,7 @@
     - [크기 제한 연산자(Size-limiting operators)](#크기-제한-연산자size-limiting-operators)
   - [플로우 종단 연산자(Terminal flow operator)](#플로우-종단-연산자terminal-flow-operator)
   - [플로우는 순차적이다(Flow are sequential)](#플로우는-순차적이다flow-are-sequential)
-  - [플롱우 컨텍스트(Flow Context)](#플롱우-컨텍스트flow-context)
+  - [플로우 컨텍스트(Flow Context)](#플로우-컨텍스트flow-context)
     - [withContext를 통한 잘못 된 방출(Wrong emission withContext)](#withcontext를-통한-잘못-된-방출wrong-emission-withcontext)
     - [flowOn 연산자(flowOn operator)](#flowon-연산자flowon-operator)
   - [버퍼링(Buffering)](#버퍼링buffering)
@@ -296,7 +296,7 @@ Collect string 4
 Filter 5
 ```
 
-## 플롱우 컨텍스트(Flow Context)
+## 플로우 컨텍스트(Flow Context)
 flow의 수집(종단함수 호출)은 항상 CoroutineContext안에서 수행된다.  
 이를 **컨텍스트 보존(context preservation)** 이라 한다.  
 
