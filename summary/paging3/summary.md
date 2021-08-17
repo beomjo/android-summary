@@ -57,22 +57,22 @@ class SearchPagingSource(
 - `public abstract suspend fun load(params: LoadParams<Key>): LoadResult<Key, Value>`
 - `public abstract fun getRefreshKey(state: PagingState<Key, Value>): Key?`
 
-#### load 함수
-load 함수는 `LoadResult`를 반환해야한다.   
+#### `load` 함수
+`load` 함수는 `LoadResult`를 반환해야한다.   
 - `LoadResult.Page`: 로드에 성공한 경우
 - `LoadResult.Error`: 오류가 발생한 경우
 
 `LoadResult.Page`를 구성할 때 상응하는 방향으로 목록을 로드할 수 없는 경우 `nextKey` 또는 `prevKey`에 null을 전달한다.   
 예를 들어 네트워크 응답에 성공했지만 목록이 비어 있는 경우에는 로드할 데이터가 없는 것으로 간주할 수 있습니다. 따라서 nextKey가 null일 수 있다.  
 
-#### getRefreshKey 함수
+#### `getRefreshKey` 함수
 새로고침키는 `PagingSource.load()`의 후속 새로고침 호출에 사용 된다.  
 첫 번째 호출은 Pager에 의해 제공되는 initialKey를 사용한다.  
 새로고침은 스와이프하여 새로고침하거나 데이터베이스 업데이트, 구성 변경, 프로세스 중단 등으로 인해 무효화되어   
 Paging 라이브러리가 현재 목록을 대체할 새 데이터를 로드하려고 할 때마다 발생한다.   
 일반적으로 후속 새로고침 호출은 가장 최근에 액세스한 인덱스를 나타내는 `PagingState.anchorPosition` 주변 데이터의 로드를 다시 시작한다.  
 
-### PagingData
+### `PagingData`
 `PagingData`는 `PagingData`를 다른 레이어로 전달할 API를 결정해야한다.  
 - **Kotlin Flow**: `Pager.flow` 사용
 - **LiveData**: `Pager.liveData` 사용
@@ -88,8 +88,8 @@ Paging 라이브러리가 현재 목록을 대체할 새 데이터를 로드하�
     - 기본적으로 `PagingConfig.maxSize`는 무제한이므로 페이지가 삭제되지 않는다. 페이지를 삭제하려면 사용자가 스크롤 방향을 변경할 때 네트워크 요청이 너무 많이 발생하지 않도록 `maxSize`를 충분히 큰 수로 유지해야 한다. 최솟값은 `pageSize + prefetchDistance * 2`이다
 - **PagingSource를 만드는 방법을 정의하는 함수**
 
-### Paging.flow
-PagingConfig를 기반으로 `Flow<PagingData<T>>`를 전달
+### `Paging.flow`
+`PagingConfig`를 기반으로 `Flow<PagingData<T>>`를 전달
 ```kotlin
 fun getSearchResultStream(query: String): Flow<PagingData<Repo>> {
         return Pager(
@@ -102,7 +102,7 @@ fun getSearchResultStream(query: String): Flow<PagingData<Repo>> {
     }
 ```
 
-### PagingDataAdapter
+### `PagingDataAdapter`
 `PagingData`를 `RecyclerView`에 바인딩하려면 `PagingDataAdapter`를 사용하면된다.  
 `PagingData` 콘텐츠가 로드될 때마다 `PagingDataAdapter`에서 알림을 받은 다음 `RecyclerView`에 업데이트하라는 신호를 보낸다.  
 ```kotlin
@@ -117,7 +117,7 @@ class SearchPagingAdapter : PagingDataAdapter<SearchItem, RecyclerView.ViewHolde
 ```
 
 
-## LoadStateAdapter를 사용하여 Header, Footer 추가하기
+## `LoadStateAdapter`를 사용하여 Header, Footer 추가하기
 `LoadStateAdapter`는 로드 상태가 변경되면 자동으로 알림을 받는다.
 상태는 `LoadState`값으로 `onCreateViewHolder`, `onBindViewHolder` 함수로 넘어오게 된다.
 
