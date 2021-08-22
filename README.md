@@ -37,6 +37,7 @@
   - [Navigation Component](/summary/jetpack/navigation.md)
 - Test
    - [MockK](summary/test/mockk.md)
+   - [Kotest](summary/test/kotest.md)
 - Gradle
    - [Kotlin DSL + buildSrc 으로 의존성 관리](summary/gradle/kotlin_dsl_build_src.md)
 - Etc
