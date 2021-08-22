@@ -1,5 +1,30 @@
 # Paging3
 
+## Index
+- [Paging3](#paging3)
+  - [Index](#index)
+  - [Paging3란?](#paging3란)
+  - [기존 Paging 구현 방식](#기존-paging-구현-방식)
+  - [Paging3 기능 및 장점](#paging3-기능-및-장점)
+  - [핵심개념](#핵심개념)
+    - [PagingSource](#pagingsource)
+      - [load 함수](#load-함수)
+      - [getRefreshKey 함수](#getrefreshkey-함수)
+    - [PagingData](#pagingdata)
+    - [Paging.flow](#pagingflow)
+    - [PagingDataAdapter](#pagingdataadapter)
+  - [LoadStateAdapter를 사용하여 Header, Footer 추가하기](#loadstateadapter를-사용하여-header-footer-추가하기)
+  - [구분자(Separator) 추가하기](#구분자separator-추가하기)
+  - [네트워크 및 데이터베이스에서 페이징(RemoteMediator)](#네트워크-및-데이터베이스에서-페이징remotemediator)
+    - [Room 설정](#room-설정)
+      - [Entity 추가](#entity-추가)
+      - [Dao 추가](#dao-추가)
+      - [Database 정의](#database-정의)
+    - [RemoteMediator 구현](#remotemediator-구현)
+      - [load 함수 구현](#load-함수-구현)
+    - [Pager 빌더로 PageData flow 생성](#pager-빌더로-pagedata-flow-생성)
+
+
 ## Paging3란?
 로컬 저장소에서나 네트워크를 통해 대규모 데이터 세트의 데이터 페이지를 로드하고 표시하여 네트워크 대역폭과 시스템 리소스를 모두 더 효율적으로 사용할 수 있도록 도와주는 라이브러리이다.  
 쉽게 말하면 안드로이드에서 로컬 데이터베이스 또는 네트워크(Remote)의 데이터를 페이지 단위로 UI에 쉽게 표현할 수 있도록 도와주는 라이브러리다.  
