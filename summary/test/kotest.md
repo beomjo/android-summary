@@ -33,6 +33,19 @@
     - [InstancePerTest](#instancepertest)
     - [InstancePerLeaf](#instanceperleaf)
     - [Global Isolation Mode](#global-isolation-mode)
+  - [Assertions](#assertions)
+    - [Style](#style)
+    - [Core Matchers](#core-matchers)
+      - [범용](#범용)
+      - [타입](#타입)
+      - [비교](#비교)
+      - [Iterator](#iterator)
+      - [Map](#map)
+      - [String](#string)
+      - [Integer, Long](#integer-long)
+      - [Collection](#collection)
+      - [Coroutine Channel](#coroutine-channel)
+    - [Soft Assertions](#soft-assertions)
 
 <!-- /code_chunk_output -->
 
@@ -661,4 +674,149 @@ class ProjectConfig: AbstractProjectConfig() {
 }
 ```
 
-## Matcher
+## Assertions
+Kotest는 현재 여러모듈에 걸쳐 약 325개의 matcher를 가지고 있다.  
+Kotest matcher를는 프레임워크에 구애받지않고 Kotest 프레임워크 또는 다른 프레임워크와 함께 사용할 수 있다.  
+
+### Style
+matcher는 두 가지 스타일을 제공한다.  
+
+확장함수 스타일
+```kotlin
+a.shouldStartWith("foo")
+```
+
+중위함수 스타일
+```kotlin
+a should startWith("foo")
+```
+
+### Core Matchers
+`kotest-assertions-core`모듈에서 제공하는 matchers  
+
+#### 범용
+- `obj.shouldBe(other)` :  주어진 obj와 other가 모두 같다는 범용 assertion
+- `expr.shouldBeTrue()` :  표현식이 `true`인지 확인
+- `expr.shouldBeFalse()` :  표현식이 `false`인지 확인
+- `shouldThrow<T> { block }` : 블록이 `T` `Throwable` 또는 하위 유형을 throw하는지 확인
+- `shouldThrowExactly<T> { block }` : 블록이 정확히 예외를 throw하는지 확인
+- `shouldThrowAny { block }` : 블록이 모든 유형의 throwable을 throw하는지 확인
+- `shouldThrowMessage(message) { block }` : 코드 블록이 주어진 메시지와 함께 모든 throwable을 throw하는지 확인
+
+#### 타입 
+- `obj.shouldBeSameInstanceAs(other)` :	개체를 ID로 비교하여 정확히 동일한 참조인지 확인
+- `obj.shouldBeTypeOf<T>()`	: 주어진 Type이 정확히 `T` 유형이라고 확인, 하위클래스는 실패한다
+- `obj.shouldBeInstanceOf<T>` :	주어진 참조가 `T` 유형 또는 `T`의 하위 클래스임을 확인
+- `obj.shouldHaveAnnotation(annotationClass)` :	주어진 인스턴스에에 지정된 유형의 Annotation이 있는지 확인
+- `obj.shouldBeNull()` : 지정된 참조가 null임을 확인
+
+#### 비교
+- `comp.shouldBeLessThan(other)` : `compareTo`를 사용하여 comp가 other보다 미만인지 확인
+- `comp.shouldBeLessThanOrEqualTo(other)` : `compareTo`를 사용하여 comp가 other보다 작거나 같은지 확인
+- `comp.shouldBeEqualComparingTo(other)` : `compareTo`를 사용하여 comp가 other보다 같은지 확인
+- `comp.shouldBeEqualComparingTo(other, comparator)` : `comparator.compare`를 사용하여 comp와 other이 같은지 확인
+- `comp.shouldBeGreaterThan(other)` : `compareTo`를 사용하여 comp가 other보다 큰지 확인
+- `comp.shouldBeGreaterThanOrEqualTo(other)` : `compareTo`를 사용하여 comp가 other보다 크거나 같은지 확인
+
+#### Iterator
+- `iterator.shouldBeEmpty()` : iterator에 다음값이 없는지 검증
+- `iterator.shouldHaveNext()` : iterator에 다음값이 있는지 검증
+
+#### Map
+- `map.shouldContain("key", "value")` : map에 "key"에 대해 매핑되는 "value"가 있는지 확인
+- `map.shouldContainAll(other)`	: map과 other이 동일한 쌍을 포함하는지 확인
+- `map.shouldContainExactly(other)` : map과 other이 정확하게 동일한 쌍을 포함하는지(다른 쌍은 없어야함) 확인	
+- `map.shouldContainKey(key)` : map에 "key"의 값이 포함되어있는지 확인
+- `map.shouldContainKeys(keys)` : map에 주어진 "keys"에 모든 값이 매핑되어있는지 확인
+- `map.shouldContainValue(value)` : map에 주어진 "value"가 하나이상 매핑되어있는지 확인
+- `map.shouldContainValues(values)` : map에 주어진 "values"가 모두 포함하고 있는지 확인
+- `map.shouldBeEmpty()` : map이 비어있는지 확인
+
+#### String
+- `str.shouldBeBlank()` : 문자열이 nullOrEmpty인지 확인
+- `str.shouldBeEmpty()`	: 문자열의 길이가 0임을 확인
+- `str.shouldBeLowerCase()`	: 문자열이 모두 소문자인지 확인
+- `str.shouldBeUpperCase()`	: 문자열이 모두 대문자임을 확인
+- `str.shouldContain("substr")`	: 문자열에 지정된 하위 문자열이 포함되어 있는지 확인. 하위 문자열은 문자열과 같을 수 있고, 대 소문자를 구분한다
+- `str.shouldContain(regex)` : 문자열에 주어진 정규 표현식이 포함되어 있는지 확인
+- `str.shouldContainADigit()` : 문자열에 최소한 하나의 숫자가 포함되어 있는지 확인
+- `str.shouldContainIgnoringCase(substring)` : 문자열에 대소문자를 무시하고 하위 문자열이 포함되어 있는지 확인
+- `str.shouldContainOnlyDigits()` : 문자열에 숫자만 포함되어 있거나 비어 있는지 확인
+- `str.shouldBeInteger([radix])` : 문자열에 정수가 포함되어 있는지 확인하고 반환
+- `str.shouldContainOnlyOnce(substring)` : 문자열에 부분 문자열이 정확히 한 번 포함되어 있는지 확인
+- `str.shouldEndWith("suffix")`	: 문자열이 지정된 접미사로 끝나는 것을 확인. 접미사는 문자열과 같을 수 있고, 대소문자를 구분한다
+- `str.shouldHaveLength(length)` : 문자열이 주어진 길이를 가지고 있는지 확인
+`str.shouldHaveLineCount(count)` : 문자열에 주어진 수의 행이 포함되어 있는지 확인. `tr.split("\n").length.shouldBe(n)`
+- `str.shouldHaveMaxLength(max)` : 문자열이 주어진 최대 길이보다 길지 않은지 확인
+- `str.shouldHaveMinLength(min)` : 문자열이 주어진 최소 길이보다 짧지 않은지 확인
+- `str.shouldHaveSameLengthAs(length)` : 문자열의 길이가 다른 문자열과 동일한지 확인
+- `str.shouldMatch(regex)` : 문자열이 주어진 정규식과 완전히 일치하는지 확인
+- `str.shouldStartWith("prefix")` : 문자열이 주어진 접두사로 시작하는지 확인. 접두사는 문자열과 같을 수 있고, 대소문자를 구분한다
+- `str.shouldBeEqualIgnoringCase(other)` : 문자열이 대소문자를 무시하고 다른 문자열과 같은지 확인
+
+#### Integer, Long
+`num.shouldBeBetween(x, y)` : x와 y 사이에 있고 x와 y를 모두 포함하는지 확인
+`num.shouldBeLessThan(n)` : num이 주어진 값 n보다 작다고 주장
+`num.shouldBeLessThanOrEqual(n)`: num이 주어진 값 n보다 작거나 같은지 확인
+`num.shouldBeGreaterThan(n)` : num이 주어진 값 n보다 큰지 확인
+`num.shouldBeGreaterThanOrEqual(n)` : num이 주어진 값 n보다 크거나 같은지 확인
+`num.shouldBeEven()` : num이 짝수임인지 확인
+`num.shouldBeOdd()` : num이 홀수임을 확인
+`num.shouldBeInRange(range)` : num이 지정된 범위에 포함되어 있는지 확인
+`num.shouldBeZero()` : num이 0임을 확인
+
+#### Collection 
+collection.shouldBeEmpty()	컬렉션에 요소가 없음을 확인합니다.
+collection.shouldBeUnique()	컬렉션의 모든 요소가 별개임을 확인합니다.
+collection.shouldContain(element)	컬렉션에 지정된 요소가 포함되어 있는지 확인합니다.
+collection.shouldContainAll(e1, e2, ..., en)	컬렉션에 순서가 중요하지 않은 나열된 모든 요소가 포함되어 있는지 확인합니다. 즉, 요소 ​​2는 요소 1보다 먼저 컬렉션에 있을 수 있습니다.
+collection.shouldContainDuplicates()	컬렉션에 하나 이상의 중복 요소가 포함되어 있는지 확인합니다.
+collection.shouldContainExactly()	컬렉션이 정확히 주어진 값을 포함하고 다른 것은 순서대로 포함하지 않음을 확인합니다.
+collection.shouldContainExactlyInAnyOrder()	컬렉션이 순서 에 상관없이 정확히 주어진 값을 포함하고 다른 것은 포함하지 않음을 확인 합니다 .
+collection.shouldContainAllInAnyOrder()	컬렉션에 주어진 값이 모두 포함되어 있고 순서 에 관계없이 다른 것은 포함되어 있지 않은지 확인합니다 .
+collection.shouldContainNoNulls()	컬렉션에 null 요소가 없거나 비어 있는지 확인합니다.
+collection.shouldContainNull()	컬렉션에 하나 이상의 null 요소가 포함되어 있는지 확인합니다.
+collection.shouldContainOnlyNulls()	컬렉션이 null 요소만 포함하거나 비어 있는지 확인합니다.
+collection.shouldHaveSingleElement(element)	컬렉션이 단일 요소만 포함하고 해당 요소가 지정된 요소임을 확인합니다.
+collection.shouldHaveSingleElement { block }	컬렉션이 주어진 술어에 의해 단일 요소를 포함한다고 주장합니다.
+collection.shouldHaveSize(length)	컬렉션이 정확히 주어진 길이인지 확인합니다.
+collection.shouldBeSingleton()	컬렉션에 요소가 하나만 포함되어 있는지 확인합니다.
+collection.shouldBeSingleton { block }	컬렉션이 단 하나의 요소라고 단언한 다음 이 요소를 사용하여 블록을 실행합니다.
+collection.shouldHaveLowerBound(element)	주어진 요소가 컬렉션의 모든 요소보다 작거나 같은지 확인합니다. Comparable을 구현하는 요소에 대해서만 작동합니다.
+collection.shouldHaveUpperBound(element)	주어진 요소가 컬렉션의 모든 요소보다 크거나 같은지 확인합니다. Comparable을 구현하는 요소에 대해서만 작동합니다.
+collection.shouldBeSmallerThan(col)	컬렉션이 다른 컬렉션보다 작다고 주장합니다.
+collection.shouldBeLargerThan(col)	컬렉션이 다른 컬렉션보다 크다고 주장합니다.
+collection.shouldBeSameSizeAs(col)	컬렉션의 크기가 다른 컬렉션과 동일한지 확인합니다.
+collection.shouldHaveAtLeastSize(n)	컬렉션의 크기가 n 이상인지 확인합니다.
+collection.shouldHaveAtMostSize(n)	컬렉션의 크기가 최대 n인지 확인합니다.
+list.shouldBeSorted()	목록이 정렬되었는지 확인합니다.
+list.shouldContainInOrder(other)	이 목록에 주어진 목록이 순서대로 포함되어 있는지 확인합니다. 다른 요소는 주어진 목록의 양쪽에 나타날 수 있습니다.
+list.shouldExistInOrder({ element }, ...)	이 목록에 술어와 순서대로 일치하는 요소가 포함되어 있는지 확인합니다. 다른 요소는 술어와 일치하는 요소 주변이나 요소 사이에 나타날 수 있습니다.
+list.shouldHaveElementAt(index, element)	이 목록이 주어진 위치에 주어진 요소를 포함한다고 주장합니다.
+list.shouldStartWith(lst)	이 목록이 주어진 목록의 요소로 순서대로 시작한다고 주장합니다.
+list.shouldEndWith(lst)	이 목록이 주어진 목록의 요소로 순서대로 끝나는 것을 확인합니다.
+value.shouldBeOneOf(collection)	특정 인스턴스가 컬렉션에 포함되어 있는지 확인합니다.
+collection.shouldContainAnyOf(collection)	컬렉션에 있는 요소 중 적어도 하나가 있음을 확인합니다. collection
+value.shouldBeIn(collection)	개체가 컬렉션에 포함되어 있는지 확인하고 참조가 아닌 값으로 확인합니다.
+
+#### Coroutine Channel
+`channel.shouldReceiveWithin(duration)`	: 채널이 기간내에 수신수신하는지 확인
+`channel.shouldReceiveNoElementsWithin(duration)` : 채널이 기간 내에 어떤 요소도 수신하지 않는지 확인
+`channel.shouldHaveSize(n)`	: 닫기 전에 채널이 정확히 n개의 요소를 수신하는지 확인
+`channel.shouldReceiveAtLeast(n)` : 채널이 >= n개의 요소를 수신하는지 확인
+`channel.shouldReceiveAtMost(n)` : 채널이 닫기 전에 <=n 요소를 수신하는지 확인
+`channel.shouldBeClosed()` : 채널이 닫혀 있는지 확인
+`channel.shouldBeOpen()` : 채널이 열려 있는지 확인
+`channel.shouldBeEmpty() : `채널이 비어 있음을 확인
+
+
+### Soft Assertions
+때때로 테스트에서 여러 어설션을 수행하고 실패한 모든 어설션을 보고 싶을 수 있다. 
+Kotest는 이를 위한 assertSoftly기능을 제공한다.  
+```kotlin
+assertSoftly {
+  foo shouldBe bar
+  foo should contain(baz)
+}
+```
+블록 내의 어설션이 실패하면 테스트가 계속 실행되며. 모든 실패는 블록 끝에서 보고된다.  
