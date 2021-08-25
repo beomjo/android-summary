@@ -1,5 +1,35 @@
 # ViewModel
 
+## Index
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [ViewModel](#viewmodel)
+  - [Index](#index)
+  - [Jetpack ViewModel](#jetpack-viewmodel)
+  - [특징](#특징)
+  - [생명주기](#생명주기)
+  - [ViewModel 생성하는 방법](#viewmodel-생성하는-방법)
+    - [1. 파라미터가 없는 ViewModel, Lifecycle Extensions사용](#1-파라미터가-없는-viewmodel-lifecycle-extensions사용)
+    - [2. 파라미터가 없는 ViewModel, ViewModelProvider.NewInstanceFactory사용](#2-파라미터가-없는-viewmodel-viewmodelprovidernewinstancefactory사용)
+    - [3. 파라미터가 없는 ViewModel, ViewModelProvider.Factory 구현](#3-파라미터가-없는-viewmodel-viewmodelproviderfactory-구현)
+    - [4. 파라미터가 있는 ViewModel](#4-파라미터가-있는-viewmodel)
+    - [5. 파라미터가 없는 ViewModel, Lifecycle ViewModel KTX 사용](#5-파라미터가-없는-viewmodel-lifecycle-viewmodel-ktx-사용)
+    - [6. 파라미터가 있는 ViewModel, Lifecycle ViewModel KTX 사용](#6-파라미터가-있는-viewmodel-lifecycle-viewmodel-ktx-사용)
+      - [7. 파라미터가 있는 ViewModel, Dagger 사용](#7-파라미터가-있는-viewmodel-dagger-사용)
+  - [ViewModel이 사라지는 시점](#viewmodel이-사라지는-시점)
+  - [Fragment간의 데이터 공유](#fragment간의-데이터-공유)
+    - [1. Activity에서 ViewModel을 선언하여 Fragment로 넘겨주기](#1-activity에서-viewmodel을-선언하여-fragment로-넘겨주기)
+    - [2. Fragment에서 선언하기](#2-fragment에서-선언하기)
+      - [2-1 activity를 형변환 하기](#2-1-activity를-형변환-하기)
+      - [2-2 requiredActivity 사용](#2-2-requiredactivity-사용)
+    - [3. Fragment KTX사용](#3-fragment-ktx사용)
+
+<!-- /code_chunk_output -->
+
+
 ## Jetpack ViewModel
 ViewModel은 Jetpack 구성요소중 하나로, 본래 ViewModel이란 이름은  
 소프트웨어 개발 디자인 패턴 중 하나인 MVVM 디자인 패턴으로부터 파생되었다.  
