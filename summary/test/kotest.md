@@ -44,6 +44,7 @@
       - [String](#string)
       - [Integer, Long](#integer-long)
       - [Collection](#collection)
+      - [Result](#result)
       - [Coroutine Channel](#coroutine-channel)
     - [Soft Assertions](#soft-assertions)
 
@@ -692,7 +693,7 @@ a should startWith("foo")
 ```
 
 ### Core Matchers
-`kotest-assertions-core`모듈에서 제공하는 matchers  
+`kotest-assertions-core`모듈에서 제공하는 [Matcher](https://kotest.io/docs/assertions/core-matchers.html)
 
 #### 범용
 - `obj.shouldBe(other)` :  주어진 obj와 other가 모두 같다는 범용 assertion
@@ -797,6 +798,14 @@ a should startWith("foo")
 - `collection.shouldContainAnyOf(collection)` : 컬렉션에 있는 element 중 적어도 하나가 있음을 확인
 - `value.shouldBeIn(collection)` : object가 컬렉션에 포함되어 있는지 확인. (참조가 아닌 값으로 확인함)
 
+#### Result
+- `result.shouldBeSuccess()` : Result가 Success인지 확인
+- `result.shouldBeSuccess(value)` : Result가 Success이고 value와 동일한지 확인
+- `result.shouldBeSuccess(block)` : Result가 Success이면 블럭을 실행하여 확인
+- `result.shouldBeFailure()` : Result가 Failure인지 확인
+- `result.shouldBeFailureOfType<Type : Throwable>()` : Result의 Failure의 타입이 동일한지 확인
+- `result.shouldBeFailure(block)` : Result가 Failure이면 블럭을 실행하여 확인
+
 #### Coroutine Channel
 `channel.shouldReceiveWithin(duration)`	: 채널이 기간내에 수신수신하는지 확인
 `channel.shouldReceiveNoElementsWithin(duration)` : 채널이 기간 내에 어떤 요소도 수신하지 않는지 확인
@@ -806,7 +815,6 @@ a should startWith("foo")
 `channel.shouldBeClosed()` : 채널이 닫혀 있는지 확인
 `channel.shouldBeOpen()` : 채널이 열려 있는지 확인
 `channel.shouldBeEmpty() : `채널이 비어 있음을 확인
-
 
 ### Soft Assertions
 때때로 테스트에서 여러 어설션을 수행하고 실패한 모든 어설션을 보고 싶을 수 있다. 
