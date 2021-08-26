@@ -766,38 +766,36 @@ a should startWith("foo")
 `num.shouldBeZero()` : num이 0임을 확인
 
 #### Collection 
-collection.shouldBeEmpty()	컬렉션에 요소가 없음을 확인합니다.
-collection.shouldBeUnique()	컬렉션의 모든 요소가 별개임을 확인합니다.
-collection.shouldContain(element)	컬렉션에 지정된 요소가 포함되어 있는지 확인합니다.
-collection.shouldContainAll(e1, e2, ..., en)	컬렉션에 순서가 중요하지 않은 나열된 모든 요소가 포함되어 있는지 확인합니다. 즉, 요소 ​​2는 요소 1보다 먼저 컬렉션에 있을 수 있습니다.
-collection.shouldContainDuplicates()	컬렉션에 하나 이상의 중복 요소가 포함되어 있는지 확인합니다.
-collection.shouldContainExactly()	컬렉션이 정확히 주어진 값을 포함하고 다른 것은 순서대로 포함하지 않음을 확인합니다.
-collection.shouldContainExactlyInAnyOrder()	컬렉션이 순서 에 상관없이 정확히 주어진 값을 포함하고 다른 것은 포함하지 않음을 확인 합니다 .
-collection.shouldContainAllInAnyOrder()	컬렉션에 주어진 값이 모두 포함되어 있고 순서 에 관계없이 다른 것은 포함되어 있지 않은지 확인합니다 .
-collection.shouldContainNoNulls()	컬렉션에 null 요소가 없거나 비어 있는지 확인합니다.
-collection.shouldContainNull()	컬렉션에 하나 이상의 null 요소가 포함되어 있는지 확인합니다.
-collection.shouldContainOnlyNulls()	컬렉션이 null 요소만 포함하거나 비어 있는지 확인합니다.
-collection.shouldHaveSingleElement(element)	컬렉션이 단일 요소만 포함하고 해당 요소가 지정된 요소임을 확인합니다.
-collection.shouldHaveSingleElement { block }	컬렉션이 주어진 술어에 의해 단일 요소를 포함한다고 주장합니다.
-collection.shouldHaveSize(length)	컬렉션이 정확히 주어진 길이인지 확인합니다.
-collection.shouldBeSingleton()	컬렉션에 요소가 하나만 포함되어 있는지 확인합니다.
-collection.shouldBeSingleton { block }	컬렉션이 단 하나의 요소라고 단언한 다음 이 요소를 사용하여 블록을 실행합니다.
-collection.shouldHaveLowerBound(element)	주어진 요소가 컬렉션의 모든 요소보다 작거나 같은지 확인합니다. Comparable을 구현하는 요소에 대해서만 작동합니다.
-collection.shouldHaveUpperBound(element)	주어진 요소가 컬렉션의 모든 요소보다 크거나 같은지 확인합니다. Comparable을 구현하는 요소에 대해서만 작동합니다.
-collection.shouldBeSmallerThan(col)	컬렉션이 다른 컬렉션보다 작다고 주장합니다.
-collection.shouldBeLargerThan(col)	컬렉션이 다른 컬렉션보다 크다고 주장합니다.
-collection.shouldBeSameSizeAs(col)	컬렉션의 크기가 다른 컬렉션과 동일한지 확인합니다.
-collection.shouldHaveAtLeastSize(n)	컬렉션의 크기가 n 이상인지 확인합니다.
-collection.shouldHaveAtMostSize(n)	컬렉션의 크기가 최대 n인지 확인합니다.
-list.shouldBeSorted()	목록이 정렬되었는지 확인합니다.
-list.shouldContainInOrder(other)	이 목록에 주어진 목록이 순서대로 포함되어 있는지 확인합니다. 다른 요소는 주어진 목록의 양쪽에 나타날 수 있습니다.
-list.shouldExistInOrder({ element }, ...)	이 목록에 술어와 순서대로 일치하는 요소가 포함되어 있는지 확인합니다. 다른 요소는 술어와 일치하는 요소 주변이나 요소 사이에 나타날 수 있습니다.
-list.shouldHaveElementAt(index, element)	이 목록이 주어진 위치에 주어진 요소를 포함한다고 주장합니다.
-list.shouldStartWith(lst)	이 목록이 주어진 목록의 요소로 순서대로 시작한다고 주장합니다.
-list.shouldEndWith(lst)	이 목록이 주어진 목록의 요소로 순서대로 끝나는 것을 확인합니다.
-value.shouldBeOneOf(collection)	특정 인스턴스가 컬렉션에 포함되어 있는지 확인합니다.
-collection.shouldContainAnyOf(collection)	컬렉션에 있는 요소 중 적어도 하나가 있음을 확인합니다. collection
-value.shouldBeIn(collection)	개체가 컬렉션에 포함되어 있는지 확인하고 참조가 아닌 값으로 확인합니다.
+- `collection.shouldBeEmpty()` : 컬렉션에 element가 없음을 확인
+- `collection.shouldBeUnique()`	: 컬렉션의 모든 element가 중복이 없는지 확인
+- `collection.shouldContain(element)` : 컬렉션에 지정된 element가 포함되어 있는지 확인
+- `collection.shouldContainAll(e1, e2, ..., en)` : 컬렉션에 순서가 중요하지 않은 나열된 모든 element가 포함되어 있는지 확인
+- `collection.shouldContainDuplicates()` : 컬렉션에 하나이상의 중복 element가 포함되어 있는지 확인
+- `collection.shouldContainExactly(e1, e2, ..., en)` : 컬렉션이 정확히 주어진 값을 포함하고 다른것은 순서대로 포함하지 않음을 확인
+- `collection.shouldContainExactlyInAnyOrder(e1, e2, ..., en)` : 컬렉션이 순서에 상관없이 정확히 주어진 값을 포함하고 다른 것은 포함하지 않음을 확인 
+- `collection.shouldContainNull()` : 컬렉션에 하나 이상의 null element가 포함되어 있는지 확인
+- `collection.shouldContainOnlyNulls()`	: 컬렉션이 null elements만 포함하거나 비어 있는지 확인
+- `collection.shouldHaveSingleElement(element)`	: 컬렉션이 하나의 element만 포함하는지 확인
+- `collection.shouldHaveSingleElement { block }` : 컬렉션이 주어진 술어에의해 하나의 element를 포함하는지 확인
+- `collection.shouldHaveSize(length)` : 컬렉션이 정확히 주어진 길이인지 확인
+- `collection.shouldBeSingleton()` : 컬렉션에 element가 하나만 포함되어 있는지 확인
+- `collection.shouldBeSingleton { block }` : 컬렉션이 단 하나의 element인지 확인한 후 이 element를 사용하여 block실행
+- `collection.shouldHaveLowerBound(element)` : 주어진 element가 컬렉션의 모든 element보다 작거나 같은지 확인. (Comparable을 구현하는 element에 대해서만 작동)
+- `collection.shouldHaveUpperBound(element)` : 주어진 element가 컬렉션의 모든 element보다 크거나 같은지 확인. (Comparable을 구현하는 요소에 대해서만 작동)
+- `collection.shouldBeSmallerThan(col)` : 컬렉션이 다른 컬렉션보다 작은지 확인
+- `collection.shouldBeLargerThan(col)` : 컬렉션이 다른 컬렉션보다 큰지 확인
+- `collection.shouldBeSameSizeAs(col)` : 컬렉션의 크기가 다른 컬렉션과 동일한지 확인
+- `collection.shouldHaveAtLeastSize(n)` : 컬렉션의 크기가 n 이상인지 확인
+- `collection.shouldHaveAtMostSize(n)` : 컬렉션의 크기가 최대 n인지 확인
+- `list.shouldBeSorted()` : 목록이 정렬되었는지 확인
+- `list.shouldContainInOrder(other)` : 이 목록에 주어진 목록이 순서대로 포함되어 있는지 확인
+- `list.shouldExistInOrder({ element }, ...)` :	이 목록에 술어와 순서대로 일치하는 element가 포함되어 있는지 확인. 다른 element는 술어와 일치하는 element 주변이나, element 사이에 나타날 수 있음
+- `list.shouldHaveElementAt(index, element)` : 이 목록이 주어진 index에 주어진 element를 포함하는지 확인
+- `list.shouldStartWith(lst)` : 이 목록이 주어진 목록의 element로 순서대로 시작하는지 확인
+- `list.shouldEndWith(lst)` : 이 목록이 주어진 목록의 element로 순서대로 끝나는 것을 확인
+- `value.shouldBeOneOf(collection)` :특정 인스턴스가 컬렉션에 포함되어 있는지 확인
+- `collection.shouldContainAnyOf(collection)` : 컬렉션에 있는 element 중 적어도 하나가 있음을 확인
+- `value.shouldBeIn(collection)` : object가 컬렉션에 포함되어 있는지 확인. (참조가 아닌 값으로 확인함)
 
 #### Coroutine Channel
 `channel.shouldReceiveWithin(duration)`	: 채널이 기간내에 수신수신하는지 확인
