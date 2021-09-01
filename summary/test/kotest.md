@@ -725,8 +725,8 @@ a should startWith("foo")
 
 #### Map
 - `map.shouldContain("key", "value")` : map에 "key"에 대해 매핑되는 "value"가 있는지 확인
-- `map.shouldContainAll(other)`	: map과 other이 동일한 쌍을 포함하는지 확인
-- `map.shouldContainExactly(other)` : map과 other이 정확하게 동일한 쌍을 포함하는지(다른 쌍은 없어야함) 확인	
+- `map.shouldContainAll(other)`	: map과 other이 동일한 쌍을 포함하는지 확인
+- `map.shouldContainExactly(other)` : map과 other이 정확하게 동일한 쌍을 포함하는지(다른 쌍은 없어야함) 확인	
 - `map.shouldContainKey(key)` : map에 "key"의 값이 포함되어있는지 확인
 - `map.shouldContainKeys(keys)` : map에 주어진 "keys"에 모든 값이 매핑되어있는지 확인
 - `map.shouldContainValue(value)` : map에 주어진 "value"가 하나이상 매핑되어있는지 확인
