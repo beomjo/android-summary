@@ -807,14 +807,14 @@ a should startWith("foo")
 - `result.shouldBeFailure(block)` : Result가 Failure이면 블럭을 실행하여 확인
 
 #### Coroutine Channel
-`channel.shouldReceiveWithin(duration)`	: 채널이 기간내에 수신수신하는지 확인
-`channel.shouldReceiveNoElementsWithin(duration)` : 채널이 기간 내에 어떤 요소도 수신하지 않는지 확인
-`channel.shouldHaveSize(n)`	: 닫기 전에 채널이 정확히 n개의 요소를 수신하는지 확인
-`channel.shouldReceiveAtLeast(n)` : 채널이 >= n개의 요소를 수신하는지 확인
-`channel.shouldReceiveAtMost(n)` : 채널이 닫기 전에 <=n 요소를 수신하는지 확인
-`channel.shouldBeClosed()` : 채널이 닫혀 있는지 확인
-`channel.shouldBeOpen()` : 채널이 열려 있는지 확인
-`channel.shouldBeEmpty() : `채널이 비어 있음을 확인
+- `channel.shouldReceiveWithin(duration)`	: 채널이 기간내에 수신수신하는지 확인
+- `channel.shouldReceiveNoElementsWithin(duration)` : 채널이 기간 내에 어떤 요소도 수신하지 않는지 확인
+- `channel.shouldHaveSize(n)`	: 닫기 전에 채널이 정확히 n개의 요소를 수신하는지 확인
+- `channel.shouldReceiveAtLeast(n)` : 채널이 >= n개의 요소를 수신하는지 확인
+- `channel.shouldReceiveAtMost(n)` : 채널이 닫기 전에 <=n 요소를 수신하는지 확인
+- `channel.shouldBeClosed()` : 채널이 닫혀 있는지 확인
+- `channel.shouldBeOpen()` : 채널이 열려 있는지 확인
+- `channel.shouldBeEmpty() : `채널이 비어 있음을 확인
 
 ### Soft Assertions
 때때로 테스트에서 여러 어설션을 수행하고 실패한 모든 어설션을 보고 싶을 수 있다. 
