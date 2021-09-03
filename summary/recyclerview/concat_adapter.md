@@ -47,10 +47,10 @@ public static final Config DEFAULT = new Config(true, NO_STABLE_IDS);
 
 ## 사용예
 ```kotlin
- adapter = ConcatAdapter(
-                ConcatAdapter.Config.DEFAULT,
-                SearchControlMenuAdapter(),
-                SearchPagingAdapter()
-            )
+adapter = ConcatAdapter(
+              ConcatAdapter.Config.DEFAULT,
+              SearchControlMenuAdapter(),
+              SearchPagingAdapter()
+          )
 ```
 
