@@ -62,17 +62,17 @@ Paging 3은 이전 Paging 라이브러리 버전과 크게 달라졌다.
 ### `PagingSource`
 PagingSource를 정의하려면 아래의 항목을 정의해야한다.  
 - **페이징 키의 유형**: 현재 로드한 데이터의 페이지 정보 데이터의 타입, 예시에서 검색 API에서 페이지에 1을 기반으로 하는 색인 번호를 사용하므로 유형은 Int
-- **로드된 데이터의 유형**: 응답 모델 타입 `Document`
+- **로드된 데이터의 유형**: 응답 모델 타입 `SearchDocument`
 - **데이터를 가져오는 위치**: Retrofit에서 가져오므로 `SearchApi`
 ```kotlin
 class SearchPagingSource(
         private val query: String,
         private val api: SearchApi
-) : PagingSource<Int, Document>() {
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Document> {
+) : PagingSource<Int, SearchDocument>() {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, SearchDocument> {
         TODO("Not yet implemented")
     }
-   override fun getRefreshKey(state: PagingState<Int, Document>): Int? {
+   override fun getRefreshKey(state: PagingState<Int, SearchDocument>): Int? {
         TODO("Not yet implemented")
     }
 }
@@ -116,7 +116,7 @@ Paging 라이브러리가 현재 목록을 대체할 새 데이터를 로드하�
 ### `Paging.flow`
 `PagingConfig`를 기반으로 `Flow<PagingData<T>>`를 전달
 ```kotlin
-fun getSearchResultStream(query: String): Flow<PagingData<Repo>> {
+fun getSearchResultStream(query: String): Flow<PagingData<SearchDocument>> {
         return Pager(
             config = PagingConfig(
                 pageSize = NETWORK_PAGE_SIZE,
@@ -136,7 +136,7 @@ PagingDataAdapter<T : Any, VH : RecyclerView.ViewHolder>
 T는 `PagingData`의 타입 이다.  
 
 ```kotlin
-class SearchPagingAdapter : PagingDataAdapter<SearchItem, RecyclerView.ViewHolder>(SearchDiffUtil()) {
+class SearchPagingAdapter : PagingDataAdapter<SearchUiItem, RecyclerView.ViewHolder>(SearchDiffUtil()) {
     // body is unchanged
 }
 ```
