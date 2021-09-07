@@ -47,7 +47,7 @@ Paging 3은 이전 Paging 라이브러리 버전과 크게 달라졌다.
 - **사용자가 로드된 데이터의 끝까지 스크롤할 때 구성 가능한 RecyclerView 어댑터가 자동으로 데이터를 요청**
 - **Kotlin Coroutine 및 Flow뿐만 아니라 LiveData 및 RxJava 최고 수준 지원**
 - **새로고침 및 재시도 기능을 포함하여 오류 처리 기본으로 지원**
-- **기존 Paging2의 DataSource들을 통합, 심플한 DataSource 인터페이스 제공**
+- **기존 Paging2의 DataSource들을 통합, 심플한 DataSource 인터페이스 제공**
    -  `DatPageKeyedDataSource`, `PositionalDataSource`, `ItemKeyedDataSource` 통합
 - **Header, Footer 지원**
 
@@ -61,7 +61,7 @@ Paging 3은 이전 Paging 라이브러리 버전과 크게 달라졌다.
 
 ### `PagingSource`
 PagingSource를 정의하려면 아래의 항목을 정의해야한다.  
-- **페이징 키의 유형**: 현재 로드한 데이터의 페이지 정보 데이터의 타입, 예시에서 검색 API에서 페이지에 1을 기반으로 하는 색인 번호를 사용하므로 유형은 Int
+- **페이징 키의 유형**: 현재 로드한 데이터의 페이지 정보 데이터의 타입, 예시에서 검색 API에서 페이지에 1을 기반으로 하는 색인 번호를 사용하므로 유형은 Int
 - **로드된 데이터의 유형**: 응답 모델 타입 `Document`
 - **데이터를 가져오는 위치**: Retrofit에서 가져오므로 `SearchApi`
 ```kotlin
