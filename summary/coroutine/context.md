@@ -49,8 +49,8 @@ Dispatchers.Default의 스레드를 사용한다.
 launch,async등의 Builder 함수에서 start 매개변수에 사용된다.
 coroutine의 시작에 관련하여 설정한다  
 - CoroutineStart.DEFAULT: CoroutineContext에 따라 즉시 Coroutine을 시작한다
-- CoroutineStart.LAZY: start()함수또는 await() 사용하여 시작될때까지 작업을 지연한다
-- CoroutineStart.ATOMIC: 원자적으로(즉,취소할 수 없는 방식으로) CoroutineContext에 따라 실행되도록 Coroutine을 예약한다.DEFAULT와 유사하지만 실행을 시작하기전에 Coroutine을 cancel() 할 수 없다
+- CoroutineStart.LAZY: `start()`함수또는 `await()` 사용하여 시작될때까지 작업을 지연한다
+- CoroutineStart.ATOMIC: 원자적으로(즉,취소할 수 없는 방식으로) CoroutineContext에 따라 실행되도록 Coroutine을 예약한다.DEFAULT와 유사하지만 실행을 시작하기전에 Coroutine을 `cancel()` 할 수 없다
 - CoroutineStart.UNDISPATCHED: Coroutine이 Dispatchers.Unconfined를 사용하여 시작된 것처럼 현재스레드에서 첫번째 중단점(suspend)까지 Coroutine을 실행한다. Coroutine이 중단(suspend)이 재개되었을때의 스레드에서 다시 수행된다
 
 
@@ -79,7 +79,7 @@ Job으로 Coroutine의 상태를 확인할 수 있고 제어할 수 있다.
 - start : 아직 시작되지 않은 Job이 있는경우 관련한 Coroutine을 시작한다
     - 동작중인경우 true, 준비 또는 완료상태이면 false를 return한다
 - join : 현재 동작중인 Coroutine 동작이 끝날대 까지 대기한다
-    - async{} await와 비슷한 개념  
+    - `async{} await`와 비슷한 개념  
 - cancel : Job을 취소
 - cancelAndJoin : 현재 Job을 취소하고 취소된 작업이 완료될때까지 대기한다.
 - cancelChildren : 현재 Coroutine의 하위 Job을 모두 취소한다
@@ -140,7 +140,7 @@ Channel이 close되었을 때, close전까지 send했던 Element들은 남아있
 - withTimoeoutOrNull : 지정된 제한시간내에 block내의 Coroutine이 완료되지않을경우 null을 반환한다
 - awaitAll : 주어진 모든 작업의 완료를 기다린다 
     - 주어진 모든 작업이 완료될때까지 현재 Coroutine을 suspend한다
-    - e.g. async{}의 완료 대기
+    - e.g. `async{}`의 완료 대기
 - joinAll : 주어진 모든 작업이 완료될때까지 기다린다 
     - 주어진 모든 작업이 완료될때까지 현재 Coroutine을 suspend한다
-    - e.g. launch{}의 완료 대기
+    - e.g. `launch{}`의 완료 대기
