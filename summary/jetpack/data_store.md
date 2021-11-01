@@ -153,7 +153,7 @@ suspend fun enableSortByDeadline(enable: Boolean) {
 
 ### Overview
 SharedPreferences 및 Preferences DataStore의 단점 중 하나는 스키마를 정의하거나 키가 올바른 유형으로 액세스되는지 확인할 방법이 없다는 것이다.  
-Proto DataStore는 프로토콜 버퍼 를 사용하여 스키마를 정의 함으로써이 문제를 한다.   
+ProtoDataStore는 프로토콜 버퍼 를 사용하여 스키마를 정의 함으로써이 문제를 한다.   
 Protobufs를 사용하면 DataStore는 어떤 유형이 저장되는지 알고 있으며이를 제공하기 만하면 키를 사용할 필요가 없다.  
 
 ### 특징
