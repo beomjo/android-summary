@@ -141,7 +141,7 @@ flow는 sequnce와 비슷하게 cold 스트림이다.
 
 
 ## 플로우의 취소(Flow cancellation basics)
-flow의 취소는 coroutine의 일반적인 협력적인 취소를 지킵니다.
+flow의 취소는 coroutine의 일반적인 협력적인 취소를 지킨다.
 ```
 fun simple(): Flow<Int> = flow { 
     for (i in 1..3) {
