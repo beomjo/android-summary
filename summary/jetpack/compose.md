@@ -21,3 +21,10 @@ Jetpack Compose는 Android에서 UI 개발을 간소화하고 가속화한다.
 
 
 ## Composable 함수
+- @Composable 어노테이션으로 지정한다
+- Composable 함수는 매개변수를 받을 수 있으며, 이 매개변수를 통해 앱 로직이 UI를 형성할 수 있다
+- Composable 함수는 아무것도 반환하지 않는다
+- 함수는 멱등원이며 부작용이 없다
+- 함수는 동일한 인수로 여러번 호출될 때 동일한 방식으로 작동하며, 함수는 속성 또는 전역변수 수정과 같은 부작용 없이 UI를 형성한다
+
+## ReComposition
