@@ -28,3 +28,6 @@ Jetpack Compose는 Android에서 UI 개발을 간소화하고 가속화한다.
 - 함수는 동일한 인수로 여러번 호출될 때 동일한 방식으로 작동하며, 함수는 속성 또는 전역변수 수정과 같은 부작용 없이 UI를 형성한다
 
 ## ReComposition
+명령형방식에서는 위젯을 변경하려면 위젯의 setter를 호출하여 내부 상태를 변경한다.  
+Compose에서는 새 데이터를 사용하여 Composable함수를 호출한다. 이렇게 하면 함수가 ReComposition 되며 필요한 경우 함수에서 내보낸 위젯이 새데이터로 다시 그려진다.   
+Compose Framework는 변경된 구성요소들만 지능적으로 재구성 할 수 있다.  
