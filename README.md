@@ -27,6 +27,7 @@
   - Dagger
     - [Dagger 2](./summary/di/dagger2.md)
     - [Dagger Hilt](./summary/di/dagger_hilt.md)
+        - Deep dive - TBD
 - Jetpack
   - [LiveData](./summary/jetpack/livedata.md)
   - [ViewModel](./summary/jetpack/viewmodel.md)
